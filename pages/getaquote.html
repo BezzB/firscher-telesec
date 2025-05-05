@@ -12,13 +12,599 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/styles.css">
+
+    <style>
+        /* Quote page specific styles */
+        .hero.quote-hero {
+            background: linear-gradient(135deg, var(--primary-900), var(--primary-700));
+            position: relative;
+            overflow: hidden;
+            padding: 150px 0 120px;
+        }
+        
+        .hero.quote-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../img/circuit-board.svg'), radial-gradient(circle at 80% 20%, rgba(12, 218, 245, 0.15), transparent 60%);
+            background-size: cover;
+            opacity: 0.15;
+            z-index: 1;
+        }
+        
+        .tech-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+        
+        .quote-hero .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .quote-hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            letter-spacing: -0.5px;
+        }
+        
+        .quote-hero p {
+            font-size: 1.25rem;
+            color: var(--gray-200);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .quote-hero .hero-accent {
+            color: var(--accent);
+            font-weight: 500;
+        }
+        
+        .quote-hero .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .quote-form-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+            padding: 3rem;
+            position: relative;
+            margin-top: -80px;
+            z-index: 10;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .quote-form-container h2 {
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-800);
+            position: relative;
+            display: inline-block;
+            font-size: 2rem;
+        }
+        
+        .quote-form-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .quote-form-container p {
+            color: var(--gray-600);
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+            line-height: 1.6;
+        }
+        
+        /* Steps indicator */
+        .form-steps {
+            display: flex;
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .form-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gray-200);
+            color: var(--gray-600);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.75rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+        }
+        
+        .form-step.active .step-number {
+            background: var(--primary-500);
+            color: white;
+            box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.3);
+            transform: scale(1.1);
+        }
+        
+        .form-step.completed .step-number {
+            background: var(--accent);
+            color: var(--primary-900);
+            box-shadow: 0 5px 15px rgba(var(--accent-rgb), 0.3);
+        }
+        
+        .form-step.completed .step-number::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+        }
+        
+        .form-step-title {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+        
+        .form-step.active .form-step-title {
+            color: var(--primary-700);
+            font-weight: 600;
+        }
+        
+        .form-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gray-200);
+            z-index: 1;
+        }
+        
+        /* Form styling improvements */
+        .contact-form h3 {
+            color: var(--primary-700);
+            margin: 2rem 0 1.5rem;
+            font-weight: 600;
+            font-size: 1.4rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--gray-700);
+            font-weight: 500;
+        }
+        
+        .contact-form .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--gray-800);
+            transition: all 0.3s ease;
+            background: var(--gray-50);
+        }
+        
+        .contact-form .form-control:focus {
+            border-color: var(--primary-400);
+            box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.15);
+            outline: none;
+            background: white;
+        }
+        
+        .contact-form .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 0.75rem 1.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .contact-form .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .contact-form .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary-600);
+        }
+        
+        .contact-form .btn-primary {
+            background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.2);
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .contact-form .btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-700), var(--primary-800));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(var(--primary-rgb), 0.25);
+        }
+        
+        .contact-form select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em;
+        }
+        
+        /* Form navigation buttons */
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        
+        .form-navigation button {
+            min-width: 120px;
+            padding: 0.75rem 1.5rem;
+        }
+        
+        .form-navigation .prev-step {
+            background: transparent;
+            color: var(--primary-600);
+            border: 1px solid var(--primary-400);
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .form-navigation .prev-step:hover {
+            background: rgba(var(--primary-rgb), 0.05);
+        }
+        
+        /* Form step content transitions */
+        .form-step-content {
+            display: none;
+        }
+        
+        .form-step-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Form validation styles */
+        .form-control.invalid {
+            border-color: var(--error);
+            background-color: rgba(var(--error-rgb), 0.05);
+        }
+        
+        .form-control.invalid:focus {
+            border-color: var(--error);
+            box-shadow: 0 0 0 3px rgba(var(--error-rgb), 0.15);
+        }
+        
+        /* Process steps styling */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .process-step {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .process-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        .process-number {
+            position: absolute;
+            top: -20px;
+            left: 2rem;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            box-shadow: 0 5px 15px rgba(var(--primary-rgb), 0.3);
+        }
+        
+        .process-content h3 {
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-800);
+            font-size: 1.3rem;
+        }
+        
+        .process-content p {
+            color: var(--gray-600);
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+        
+        /* FAQ styling */
+        .faq-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        
+        .faq-question {
+            padding: 1.25rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .faq-question h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: var(--primary-800);
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question h3 {
+            color: var(--primary-600);
+        }
+        
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+        
+        .faq-icon i {
+            font-size: 0.8rem;
+            color: var(--gray-600);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-icon {
+            background: var(--primary-100);
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-icon i {
+            color: var(--primary-600);
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            padding: 0 1.25rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        
+        .faq-answer p {
+            margin-top: 0;
+            padding-bottom: 1.25rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+        
+        /* Section title styles */
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-800);
+            font-weight: 700;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Form success message styles */
+        .form-success-message {
+            background: linear-gradient(135deg, #f0f9ff, #e6f7ff);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+            border: 1px solid rgba(var(--primary-rgb), 0.1);
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: #10b981; /* success green */
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-success-message h3 {
+            color: var(--primary-800);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-success-message p {
+            color: var(--gray-700);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .reference-number {
+            background: var(--white);
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--primary-700);
+            border: 1px solid rgba(var(--primary-rgb), 0.2);
+            margin-bottom: 2rem !important;
+        }
+        
+        .success-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-600);
+            border: 1px solid var(--primary-400);
+            border-radius: 8px;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background: rgba(var(--primary-rgb), 0.05);
+        }
+        
+        /* Form error message styles */
+        .form-error-message {
+            margin-bottom: 1.5rem;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .error-content {
+            background-color: rgba(var(--error-rgb), 0.08);
+            border-left: 4px solid var(--error);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .error-content i {
+            color: var(--error);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .error-content p {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--gray-800);
+        }
+        
+        /* Newsletter form message styles */
+        .newsletter-message {
+            margin-top: 10px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .newsletter-message .success-message {
+            color: #10b981;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .newsletter-message .error-message {
+            color: var(--error);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
     <!-- Header Section -->
@@ -63,7 +649,7 @@
                 </button>
                 
                 <ul class="nav-menu">
-                    <li><a href="../">Home</a></li>
+                    <li><a href="../index.html">Home</a></li>
                     <li><a href="aboutus.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="work.html">Work</a></li>
@@ -76,11 +662,12 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero quote-hero">
+        <div class="tech-particles" id="particles-js"></div>
         <div class="container">
-            <div class="hero-content">
-                <h1 class="animate-on-scroll">Request a Free Consultation</h1>
-                <p class="animate-on-scroll">Get a tailored quote for your business technology needs</p>
+            <div class="hero-content animate-on-scroll">
+                <h1>Request a <span class="text-gradient">Personalized Quote</span></h1>
+                <p>Tell us about your business needs and challenges. Our team will create a <span class="hero-accent">tailored solution</span> with transparent pricing to help you achieve your technology goals.</p>
             </div>
         </div>
     </section>
@@ -88,165 +675,194 @@
     <!-- Quote Form Section -->
     <section class="section">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto animate-on-scroll">
-                    <div class="quote-form-container">
-                        <h2>Tell Us About Your Project</h2>
-                        <p>Please fill out the form below with details about your requirements. Our team will review your information and get back to you with a personalized quote within 24-48 hours.</p>
-                        
-                        <form id="quote-form" class="contact-form" action="https://formspree.io/f/your-formspree-id" method="POST">
-                            <h3>Personal Information</h3>
-                            <div class="form-group">
-                                <label for="name">Full Name</label>
-                                <input type="text" id="name" name="name" class="form-control" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" name="email" class="form-control" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" class="form-control" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="position">Job Title/Position</label>
-                                <input type="text" id="position" name="position" class="form-control">
-                            </div>
-                            
-                            <h3>Business Information</h3>
-                            <div class="form-group">
-                                <label for="company">Company Name</label>
-                                <input type="text" id="company" name="company" class="form-control" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="industry">Industry</label>
-                                <select id="industry" name="industry" class="form-control">
-                                    <option value="">Select your industry</option>
-                                    <option value="telecommunications">Telecommunications</option>
-                                    <option value="it">Information Technology</option>
-                                    <option value="manufacturing">Manufacturing</option>
-                                    <option value="corporate">Corporate</option>
-                                    <option value="education">Education</option>
-                                    <option value="real-estate">Real Estate</option>
-                                    <option value="hospitality">Hospitality</option>
-                                    <option value="security">Security</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="employees">Number of Employees</label>
-                                <select id="employees" name="employees" class="form-control">
-                                    <option value="">Select range</option>
-                                    <option value="1-10">1-10</option>
-                                    <option value="11-50">11-50</option>
-                                    <option value="51-200">51-200</option>
-                                    <option value="201-500">201-500</option>
-                                    <option value="501+">501+</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="location">Company Location</label>
-                                <input type="text" id="location" name="location" class="form-control" placeholder="City, Country">
-                            </div>
-                            
-                            <h3>Project Requirements</h3>
-                            <div class="form-group">
-                                <label>Services of Interest (Select all that apply)</label>
-                                <div class="checkbox-group">
-                                    <div class="checkbox-item">
-                                        <input type="checkbox" id="telecom" name="services" value="telecommunications">
-                                        <label for="telecom">Telecommunications Services</label>
-                                    </div>
-                                    <div class="checkbox-item">
-                                        <input type="checkbox" id="it-infra" name="services" value="it-infrastructure">
-                                        <label for="it-infra">IT Infrastructure</label>
-                                    </div>
-                                    <div class="checkbox-item">
-                                        <input type="checkbox" id="datacenter" name="services" value="datacenter">
-                                        <label for="datacenter">Data Center Services</label>
-                                    </div>
-                                    <div class="checkbox-item">
-                                        <input type="checkbox" id="managed" name="services" value="managed-services">
-                                        <label for="managed">Managed IT Services</label>
-                                    </div>
-                                    <div class="checkbox-item">
-                                        <input type="checkbox" id="cloud" name="services" value="cloud">
-                                        <label for="cloud">Cloud Services</label>
-                                    </div>
-                                    <div class="checkbox-item">
-                                        <input type="checkbox" id="maintenance" name="services" value="maintenance">
-                                        <label for="maintenance">Maintenance & Support</label>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="project-description">Project Description</label>
-                                <textarea id="project-description" name="project-description" class="form-control" rows="5" placeholder="Please describe your project requirements, challenges, and goals..." required></textarea>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="timeline">Project Timeline</label>
-                                <select id="timeline" name="timeline" class="form-control">
-                                    <option value="">Select timeline</option>
-                                    <option value="immediate">Immediate (within 1 month)</option>
-                                    <option value="short-term">Short-term (1-3 months)</option>
-                                    <option value="medium-term">Medium-term (3-6 months)</option>
-                                    <option value="long-term">Long-term (6+ months)</option>
-                                    <option value="ongoing">Ongoing support needed</option>
-                                    <option value="exploring">Just exploring options</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="budget">Estimated Budget (USD)</label>
-                                <select id="budget" name="budget" class="form-control">
-                                    <option value="">Select budget range</option>
-                                    <option value="below-5k">Below $5,000</option>
-                                    <option value="5k-10k">$5,000 - $10,000</option>
-                                    <option value="10k-25k">$10,000 - $25,000</option>
-                                    <option value="25k-50k">$25,000 - $50,000</option>
-                                    <option value="50k-100k">$50,000 - $100,000</option>
-                                    <option value="above-100k">Above $100,000</option>
-                                    <option value="not-sure">Not sure / Need guidance</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="additional-info">Additional Information</label>
-                                <textarea id="additional-info" name="additional-info" class="form-control" rows="3" placeholder="Any other details you'd like to share..."></textarea>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>How did you hear about us?</label>
-                                <select id="referral" name="referral" class="form-control">
-                                    <option value="">Select an option</option>
-                                    <option value="search">Search Engine</option>
-                                    <option value="social-media">Social Media</option>
-                                    <option value="referral">Referral from a colleague</option>
-                                    <option value="event">Industry Event</option>
-                                    <option value="advertisement">Advertisement</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <div class="checkbox-item">
-                                    <input type="checkbox" id="terms" name="terms" required>
-                                    <label for="terms">I agree to the processing of my personal data in accordance with Fischer Telesec's <a href="privacy.html">Privacy Policy</a>.</label>
-                                </div>
-                            </div>
-                            
-                            <button type="submit" class="btn btn-primary">Submit Request</button>
-                        </form>
+            <div class="quote-form-container animate-on-scroll">
+                <h2>Tell Us About Your Project</h2>
+                <p>Please fill out the form below with details about your requirements. Our team will review your information and get back to you with a personalized quote within 24-48 hours.</p>
+                
+                <div class="form-steps">
+                    <div class="form-step active" data-step="1">
+                        <div class="step-number">1</div>
+                        <div class="form-step-title">Personal Info</div>
+                    </div>
+                    <div class="form-step" data-step="2">
+                        <div class="step-number">2</div>
+                        <div class="form-step-title">Business Info</div>
+                    </div>
+                    <div class="form-step" data-step="3">
+                        <div class="step-number">3</div>
+                        <div class="form-step-title">Project Details</div>
                     </div>
                 </div>
+                
+                <form id="quote-form" class="contact-form" action="https://formspree.io/f/mayrbovd" method="POST">
+                    <div class="form-step-content active" id="step-1">
+                        <h3>Personal Information</h3>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="position">Job Title/Position</label>
+                            <input type="text" id="position" name="position" class="form-control">
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-primary next-step" data-next="2">Next: Business Information</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-step-content" id="step-2">
+                        <h3>Business Information</h3>
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="industry">Industry</label>
+                            <select id="industry" name="industry" class="form-control">
+                                <option value="">Select your industry</option>
+                                <option value="telecommunications">Telecommunications</option>
+                                <option value="it">Information Technology</option>
+                                <option value="manufacturing">Manufacturing</option>
+                                <option value="corporate">Corporate</option>
+                                <option value="education">Education</option>
+                                <option value="real-estate">Real Estate</option>
+                                <option value="hospitality">Hospitality</option>
+                                <option value="security">Security</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="employees">Number of Employees</label>
+                            <select id="employees" name="employees" class="form-control">
+                                <option value="">Select range</option>
+                                <option value="1-10">1-10</option>
+                                <option value="11-50">11-50</option>
+                                <option value="51-200">51-200</option>
+                                <option value="201-500">201-500</option>
+                                <option value="501+">501+</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="location">Company Location</label>
+                            <input type="text" id="location" name="location" class="form-control" placeholder="City, Country">
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline prev-step" data-prev="1">Previous</button>
+                            <button type="button" class="btn btn-primary next-step" data-next="3">Next: Project Details</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-step-content" id="step-3">
+                        <h3>Project Requirements</h3>
+                        <div class="form-group">
+                            <label>Services of Interest (Select all that apply)</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="telecom" name="services" value="telecommunications">
+                                    <label for="telecom">Telecommunications Services</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="it-infra" name="services" value="it-infrastructure">
+                                    <label for="it-infra">IT Infrastructure</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="datacenter" name="services" value="datacenter">
+                                    <label for="datacenter">Data Center Services</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="managed" name="services" value="managed-services">
+                                    <label for="managed">Managed IT Services</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="cloud" name="services" value="cloud">
+                                    <label for="cloud">Cloud Services</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="maintenance" name="services" value="maintenance">
+                                    <label for="maintenance">Maintenance & Support</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="project-description">Project Description</label>
+                            <textarea id="project-description" name="project-description" class="form-control" rows="5" placeholder="Please describe your project requirements, challenges, and goals..." required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="timeline">Project Timeline</label>
+                            <select id="timeline" name="timeline" class="form-control">
+                                <option value="">Select timeline</option>
+                                <option value="immediate">Immediate (within 1 month)</option>
+                                <option value="short-term">Short-term (1-3 months)</option>
+                                <option value="medium-term">Medium-term (3-6 months)</option>
+                                <option value="long-term">Long-term (6+ months)</option>
+                                <option value="ongoing">Ongoing support needed</option>
+                                <option value="exploring">Just exploring options</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget">Estimated Budget (USD)</label>
+                            <select id="budget" name="budget" class="form-control">
+                                <option value="">Select budget range</option>
+                                <option value="below-5k">Below $5,000</option>
+                                <option value="5k-10k">$5,000 - $10,000</option>
+                                <option value="10k-25k">$10,000 - $25,000</option>
+                                <option value="25k-50k">$25,000 - $50,000</option>
+                                <option value="50k-100k">$50,000 - $100,000</option>
+                                <option value="above-100k">Above $100,000</option>
+                                <option value="not-sure">Not sure / Need guidance</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="additional-info">Additional Information</label>
+                            <textarea id="additional-info" name="additional-info" class="form-control" rows="3" placeholder="Any other details you'd like to share..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>How did you hear about us?</label>
+                            <select id="referral" name="referral" class="form-control">
+                                <option value="">Select an option</option>
+                                <option value="search">Search Engine</option>
+                                <option value="social-media">Social Media</option>
+                                <option value="referral">Referral from a colleague</option>
+                                <option value="event">Industry Event</option>
+                                <option value="advertisement">Advertisement</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <label for="terms">I agree to the processing of my personal data in accordance with Fischer Telesec's <a href="privacy.html">Privacy Policy</a>.</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline prev-step" data-prev="2">Previous</button>
+                            <button type="submit" class="btn btn-primary">Submit Request</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -254,8 +870,8 @@
     <!-- Process Section -->
     <section class="section bg-light">
         <div class="container">
-            <h2 class="text-center animate-on-scroll">Our Consultation Process</h2>
-            <p class="text-center animate-on-scroll">How we turn your inquiry into a tailored solution</p>
+            <h2 class="section-title text-center animate-on-scroll">Our Consultation Process</h2>
+            <p class="section-subtitle text-center animate-on-scroll">How we turn your inquiry into a tailored solution</p>
             
             <div class="process-steps">
                 <div class="process-step animate-on-scroll">
@@ -312,8 +928,8 @@
     <!-- FAQ Section -->
     <section class="section">
         <div class="container">
-            <h2 class="text-center animate-on-scroll">Frequently Asked Questions</h2>
-            <p class="text-center animate-on-scroll">Common questions about our consultation process</p>
+            <h2 class="section-title text-center animate-on-scroll">Frequently Asked Questions</h2>
+            <p class="section-subtitle text-center animate-on-scroll">Common questions about our consultation process</p>
             
             <div class="faq-container">
                 <div class="faq-item animate-on-scroll">
@@ -385,10 +1001,31 @@
                 <div class="footer-column">
                     <img src="../img/logo2.png" alt="Fischer Telesec Logo" class="footer-logo">
                     <p>Fischer Telesec is a leading telecommunications and IT solutions provider serving businesses across East Africa with enterprise-grade solutions.</p>
-                    <div class="contact-info">
-                        <p><i class="fas fa-map-marker-alt"></i> Zayed Plaza, Mombasa-Malindi Road, Mombasa, Kenya</p>
-                        <p><i class="fas fa-phone-alt"></i> +254 725 763 135, +254 724 612 514</p>
-                        <p><i class="fas fa-envelope"></i> info@fischertelesec.co.ke</p>
+                    <div class="contact-info-grid">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-text">
+                                <strong>Address:</strong>
+                                <p>Zayed Plaza, Mombasa-Malindi Road, Mombasa, Kenya</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div class="contact-text">
+                                <strong>Phone:</strong>
+                                <p>
+                                    <a href="tel:+254725763135">+254 725 763 135</a><br>
+                                    <a href="tel:+254724612514">+254 724 612 514</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-text">
+                                <strong>Email:</strong>
+                                <p><a href="mailto:info@fischertelesec.co.ke">info@fischertelesec.co.ke</a></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -425,9 +1062,10 @@
                 <div class="footer-column newsletter">
                     <h5>Newsletter</h5>
                     <p>Subscribe to our newsletter for the latest updates</p>
-                    <form action="#" method="POST">
+                    <form id="newsletter-form" action="https://formspree.io/f/mayrbovd" method="POST" class="newsletter-form">
                         <input type="email" name="email" placeholder="Your email address" required>
                         <button type="submit" class="btn btn-accent">Subscribe</button>
+                        <div class="newsletter-message"></div>
                     </form>
                     <div class="social-icons">
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -446,6 +1084,93 @@
 
     <!-- JavaScript -->
     <script src="../js/main.js"></script>
+    <script src="../js/quote-form.js"></script>
+    
+    <!-- Particles JS -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize particles.js
+            if(typeof particlesJS !== 'undefined') {
+                particlesJS('particles-js', {
+                    "particles": {
+                        "number": {
+                            "value": 80,
+                            "density": {
+                                "enable": true,
+                                "value_area": 800
+                            }
+                        },
+                        "color": {
+                            "value": "#ffffff"
+                        },
+                        "shape": {
+                            "type": "circle",
+                            "stroke": {
+                                "width": 0,
+                                "color": "#000000"
+                            },
+                        },
+                        "opacity": {
+                            "value": 0.3,
+                            "random": true,
+                            "anim": {
+                                "enable": false,
+                                "speed": 1,
+                                "opacity_min": 0.1,
+                                "sync": false
+                            }
+                        },
+                        "size": {
+                            "value": 3,
+                            "random": true,
+                            "anim": {
+                                "enable": false,
+                                "speed": 40,
+                                "size_min": 0.1,
+                                "sync": false
+                            }
+                        },
+                        "line_linked": {
+                            "enable": true,
+                            "distance": 150,
+                            "color": "#ffffff",
+                            "opacity": 0.2,
+                            "width": 1
+                        },
+                        "move": {
+                            "enable": true,
+                            "speed": 2,
+                            "direction": "none",
+                            "random": false,
+                            "straight": false,
+                            "out_mode": "out",
+                            "bounce": false,
+                        }
+                    },
+                    "interactivity": {
+                        "detect_on": "canvas",
+                        "events": {
+                            "onhover": {
+                                "enable": true,
+                                "mode": "grab"
+                            },
+                            "resize": true
+                        },
+                        "modes": {
+                            "grab": {
+                                "distance": 140,
+                                "line_linked": {
+                                    "opacity": 1
+                                }
+                            }
+                        }
+                    },
+                    "retina_detect": true
+                });
+            }
+        });
+    </script>
     
     <!-- FAQ JavaScript -->
     <script>

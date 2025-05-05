@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Clients - Fischer Telesec</title>
-    <meta name="description" content="Fischer Telesec proudly serves a diverse range of clients across East Africa, delivering enterprise-grade telecommunications and IT solutions.">
+    <title>Our Clients - Fischer Telesec | Enterprise Tech Solutions</title>
+    <meta name="description" content="Fischer Telesec proudly serves industry-leading organizations across East Africa, delivering enterprise-grade telecommunications and IT solutions that drive innovation and growth.">
     
     <!-- Favicon -->
     <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
@@ -12,13 +12,21 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/clients.css">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Our Clients - Fischer Telesec">
+    <meta property="og:description" content="Fischer Telesec proudly serves industry-leading organizations across East Africa, delivering enterprise-grade telecommunications and IT solutions.">
+    <meta property="og:image" content="../img/og-image.jpg">
+    <meta property="og:url" content="https://fischertelesec.co.ke/pages/clients.html">
+    <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
     <!-- Header Section -->
@@ -63,7 +71,7 @@
                 </button>
                 
                 <ul class="nav-menu">
-                    <li><a href="../">Home</a></li>
+                    <li><a href="../index.html">Home</a></li>
                     <li><a href="aboutus.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="work.html">Work</a></li>
@@ -76,84 +84,145 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero clients-hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="animate-on-scroll">Our Valued Clients</h1>
-                <p class="animate-on-scroll">Trusted by leading organizations across East Africa</p>
+                <h1 class="animate-on-scroll">Powering East Africa's Digital Leaders</h1>
+                <p class="animate-on-scroll">We partner with forward-thinking organizations to deliver innovative technology solutions that drive business transformation and sustainable growth.</p>
+                <div class="hero-buttons">
+                    <a href="#success-stories" class="btn btn-accent animate-on-scroll">View Success Stories</a>
+                    <a href="getaquote.html" class="btn btn-secondary animate-on-scroll">Become a Client</a>
+                </div>
+                <div class="hero-stats animate-on-scroll">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="150">150+</span>
+                        <span class="stat-label">Clients Served</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="8">8+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="97">97%</span>
+                        <span class="stat-label">Client Retention</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Featured Clients Section -->
-    <section class="section">
+    <section class="section client-showcase">
         <div class="container">
-            <h2 class="text-center animate-on-scroll">Featured Clients</h2>
-            <p class="text-center animate-on-scroll">We're proud to serve a diverse range of businesses across various industries</p>
+            <h2 class="client-showcase-title animate-on-scroll">Featured Clients</h2>
+            <p class="animate-on-scroll">Partnering with industry leaders to deliver transformative technology solutions</p>
             
-            <div class="client-logos large-logos animate-on-scroll">
-                <div class="client-logo-item">
-                    <img src="../img/client-1.png" alt="China Mobile International" class="client-logo">
-                    <h3>China Mobile International</h3>
-                    <p>Telecommunications</p>
+            <div class="client-showcase-grid">
+                <div class="client-card animate-on-scroll">
+                    <div class="client-card-img">
+                        <img src="../img/china-mobile-logo.png" alt="China Mobile International" class="client-logo">
+                    </div>
+                    <div class="client-card-body">
+                        <span class="client-category">Telecommunications</span>
+                        <h3>China Mobile International</h3>
+                        <p>Global network infrastructure optimization and maintenance services across multiple locations.</p>
+                    </div>
                 </div>
                 
-                <div class="client-logo-item">
-                    <img src="../img/client-2.png" alt="Data5 IT GmbH" class="client-logo">
-                    <h3>Data5 IT GmbH</h3>
-                    <p>Information Technology</p>
+                <div class="client-card animate-on-scroll">
+                    <div class="client-card-img">
+                        <img src="../img/data5-logo.png" alt="Data5 IT GmbH" class="client-logo">
+                    </div>
+                    <div class="client-card-body">
+                        <span class="client-category">Information Technology</span>
+                        <h3>Data5 IT GmbH</h3>
+                        <p>Advanced cloud infrastructure implementation and enterprise solution deployment.</p>
+                    </div>
                 </div>
                 
-                <div class="client-logo-item">
-                    <img src="../img/client-3.png" alt="Fibrant EOOD" class="client-logo">
-                    <h3>Fibrant EOOD</h3>
-                    <p>Telecommunications</p>
+                <div class="client-card animate-on-scroll">
+                    <div class="client-card-img">
+                        <img src="../img/fibrant-logo.png" alt="Fibrant EOOD" class="client-logo">
+                    </div>
+                    <div class="client-card-body">
+                        <span class="client-category">Telecommunications</span>
+                        <h3>Fibrant EOOD</h3>
+                        <p>High-speed fiber network deployment and optimization services across urban centers.</p>
+                    </div>
                 </div>
                 
-                <div class="client-logo-item">
-                    <img src="../img/client-4.png" alt="Innovis Telecoms" class="client-logo">
-                    <h3>Innovis Telecoms</h3>
-                    <p>Telecommunications</p>
+                <div class="client-card animate-on-scroll">
+                    <div class="client-card-img">
+                        <img src="../img/innovis-logo.png" alt="Innovis Telecoms" class="client-logo">
+                    </div>
+                    <div class="client-card-body">
+                        <span class="client-category">Telecommunications</span>
+                        <h3>Innovis Telecoms</h3>
+                        <p>Comprehensive telecommunications infrastructure and managed services provision.</p>
+                    </div>
                 </div>
                 
-                <div class="client-logo-item">
-                    <img src="../img/client-5.png" alt="Symbion Consulting Group" class="client-logo">
-                    <h3>Symbion Consulting Group</h3>
-                    <p>Corporate</p>
+                <div class="client-card animate-on-scroll">
+                    <div class="client-card-img">
+                        <img src="../img/symbion-logo.png" alt="Symbion Consulting Group" class="client-logo">
+                    </div>
+                    <div class="client-card-body">
+                        <span class="client-category">Architecture & Design</span>
+                        <h3>Symbion Consulting Group</h3>
+                        <p>A leading Architectural company in East Africa specializing in innovative design solutions and architectural excellence.</p>
+                    </div>
                 </div>
                 
-                <div class="client-logo-item">
-                    <img src="../img/client-6.png" alt="Green Telecoms Tanzania Limited" class="client-logo">
-                    <h3>Green Telecoms Tanzania</h3>
-                    <p>Telecommunications</p>
+                <div class="client-card animate-on-scroll">
+                    <div class="client-card-img">
+                        <img src="../img/green-telecoms-logo.png" alt="Green Telecoms Tanzania Limited" class="client-logo">
+                    </div>
+                    <div class="client-card-body">
+                        <span class="client-category">Telecommunications</span>
+                        <h3>Green Telecoms Tanzania</h3>
+                        <p>Sustainable telecommunications infrastructure and renewable energy integration.</p>
+                    </div>
                 </div>
                 
-                <div class="client-logo-item">
-                    <img src="../img/client-7.png" alt="Solian" class="client-logo">
-                    <h3>Solian</h3>
-                    <p>Information Technology</p>
+                <div class="client-card animate-on-scroll">
+                    <div class="client-card-img">
+                        <img src="../img/solian-logo.png" alt="Solian" class="client-logo">
+                    </div>
+                    <div class="client-card-body">
+                        <span class="client-category">Real Estate</span>
+                        <h3>Solian</h3>
+                        <p>A leading Real Estate company in Kenya providing innovative property solutions and development services.</p>
+                    </div>
                 </div>
                 
-                <div class="client-logo-item">
-                    <img src="../img/client-8.png" alt="Chai Trading Company Limited" class="client-logo">
-                    <h3>Chai Trading Company</h3>
-                    <p>Agriculture</p>
+                <div class="client-card animate-on-scroll">
+                    <div class="client-card-img">
+                        <img src="../img/chai-trading-logo.png" alt="Chai Trading Company Limited" class="client-logo">
+                    </div>
+                    <div class="client-card-body">
+                        <span class="client-category">Agriculture</span>
+                        <h3>Chai Trading Company</h3>
+                        <p>Agricultural technology integration and supply chain management systems.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Client Success Stories -->
-    <section class="section bg-light">
+    <section class="section bg-light" id="success-stories">
         <div class="container">
-            <h2 class="text-center animate-on-scroll">Client Success Stories</h2>
-            <p class="text-center animate-on-scroll">Real results for real businesses</p>
+            <h2 class="client-showcase-title animate-on-scroll">Client Success Stories</h2>
+            <p class="animate-on-scroll">Delivering measurable results and transformational outcomes</p>
             
             <div class="success-stories">
                 <div class="success-story animate-on-scroll">
-                    <div class="success-story-content">
+                    <div class="success-story-header">
                         <h3>Modernizing Network Infrastructure for Safaricom</h3>
                         <p class="client-industry">Telecommunications</p>
+                        <img src="../img/safaricomlogo.png" alt="Safaricom Logo" class="client-logo">
+                    </div>
+                    <div class="success-story-content">
                         <p>Safaricom, Kenya's leading telecommunications provider, faced challenges with their expanding network infrastructure. Fischer Telesec designed and implemented a comprehensive network upgrade, resulting in:</p>
                         <ul>
                             <li>40% increase in network efficiency</li>
@@ -161,17 +230,26 @@
                             <li>Improved service delivery for millions of customers</li>
                             <li>Enhanced security protocols to protect sensitive data</li>
                         </ul>
-                        <a href="work.html#safaricom" class="btn btn-secondary">Read Case Study</a>
+                        <div class="tech-tags">
+                            <span class="tech-tag"><i class="fas fa-network-wired"></i> Cisco Networking</span>
+                            <span class="tech-tag"><i class="fas fa-shield-alt"></i> Security</span>
+                            <span class="tech-tag"><i class="fas fa-server"></i> Infrastructure</span>
+                            <span class="tech-tag"><i class="fas fa-project-diagram"></i> SDN</span>
+                        </div>
                     </div>
-                    <div class="success-story-image">
-                        <img src="../img/success-1.jpg" alt="Safaricom Success Story">
+                    <div class="success-story-footer">
+                        <a href="work.html#safaricom" class="btn btn-secondary">Read Case Study</a>
+                        <span class="project-duration"><i class="far fa-calendar-alt"></i> 6-Month Implementation</span>
                     </div>
                 </div>
                 
-                <div class="success-story reverse animate-on-scroll">
-                    <div class="success-story-content">
+                <div class="success-story animate-on-scroll">
+                    <div class="success-story-header">
                         <h3>Data Center Solutions for Kenya Power</h3>
                         <p class="client-industry">Utilities</p>
+                        <img src="../img/kenya-power.png" alt="Kenya Power Logo" class="client-logo">
+                    </div>
+                    <div class="success-story-content">
                         <p>Kenya Power needed a robust data center solution to support their critical infrastructure. Our team delivered a comprehensive data center implementation that provided:</p>
                         <ul>
                             <li>99.99% uptime for mission-critical systems</li>
@@ -179,17 +257,26 @@
                             <li>Integrated disaster recovery capabilities</li>
                             <li>Significantly improved data security measures</li>
                         </ul>
-                        <a href="work.html#kenya-power" class="btn btn-secondary">Read Case Study</a>
+                        <div class="tech-tags">
+                            <span class="tech-tag"><i class="fas fa-server"></i> Data Center</span>
+                            <span class="tech-tag"><i class="fas fa-hdd"></i> Storage</span>
+                            <span class="tech-tag"><i class="fas fa-shield-alt"></i> Security</span>
+                            <span class="tech-tag"><i class="fas fa-sync"></i> Disaster Recovery</span>
+                        </div>
                     </div>
-                    <div class="success-story-image">
-                        <img src="../img/success-2.jpg" alt="Kenya Power Success Story">
+                    <div class="success-story-footer">
+                        <a href="work.html#kenya-power" class="btn btn-secondary">Read Case Study</a>
+                        <span class="project-duration"><i class="far fa-calendar-alt"></i> 8-Month Implementation</span>
                     </div>
                 </div>
                 
                 <div class="success-story animate-on-scroll">
-                    <div class="success-story-content">
+                    <div class="success-story-header">
                         <h3>Secure Cloud Migration for Chai Trading Company</h3>
                         <p class="client-industry">Agriculture</p>
+                        <img src="../img/chai-trading-logo.png" alt="Chai Trading Company Logo" class="client-logo">
+                    </div>
+                    <div class="success-story-content">
                         <p>Chai Trading Company, a subsidiary of KTDA, needed to modernize their IT systems by migrating to the cloud. Fischer Telesec provided:</p>
                         <ul>
                             <li>Seamless migration to a hybrid cloud environment</li>
@@ -197,10 +284,16 @@
                             <li>Improved data accessibility for field operations</li>
                             <li>Enhanced security protocols to protect sensitive trade data</li>
                         </ul>
-                        <a href="work.html#chai-trading" class="btn btn-secondary">Read Case Study</a>
+                        <div class="tech-tags">
+                            <span class="tech-tag"><i class="fas fa-cloud"></i> Cloud</span>
+                            <span class="tech-tag"><i class="fas fa-exchange-alt"></i> Migration</span>
+                            <span class="tech-tag"><i class="fas fa-database"></i> Data</span>
+                            <span class="tech-tag"><i class="fas fa-shield-alt"></i> Security</span>
+                        </div>
                     </div>
-                    <div class="success-story-image">
-                        <img src="../img/success-3.jpg" alt="Chai Trading Company Success Story">
+                    <div class="success-story-footer">
+                        <a href="work.html#chai-trading" class="btn btn-secondary">Read Case Study</a>
+                        <span class="project-duration"><i class="far fa-calendar-alt"></i> 4-Month Implementation</span>
                     </div>
                 </div>
             </div>
@@ -210,72 +303,72 @@
     <!-- Industry Sectors Section -->
     <section class="section">
         <div class="container">
-            <h2 class="text-center animate-on-scroll">Industry Sectors We Serve</h2>
-            <p class="text-center animate-on-scroll">Delivering tailored technology solutions across diverse industries</p>
+            <h2 class="client-showcase-title animate-on-scroll">Industry Sectors We Serve</h2>
+            <p class="animate-on-scroll">Delivering specialized technology solutions across diverse industries</p>
             
             <div class="industry-sectors">
-                <div class="industry-sector animate-on-scroll">
+                <div class="industry-card animate-on-scroll">
                     <div class="industry-icon">
                         <i class="fas fa-broadcast-tower"></i>
                     </div>
                     <h3>Telecommunications</h3>
-                    <p>Supporting telecom providers with robust infrastructure, network optimization, and advanced communication solutions.</p>
+                    <p>Supporting telecom providers with robust infrastructure, network optimization, and advanced communication solutions for next-generation service delivery.</p>
                 </div>
                 
-                <div class="industry-sector animate-on-scroll">
+                <div class="industry-card animate-on-scroll">
                     <div class="industry-icon">
                         <i class="fas fa-laptop-code"></i>
                     </div>
                     <h3>Information Technology</h3>
-                    <p>Enabling IT companies with cutting-edge technology solutions, integration services, and specialized infrastructure.</p>
+                    <p>Enabling IT companies with cutting-edge technology solutions, integration services, and specialized infrastructure for digital transformation initiatives.</p>
                 </div>
                 
-                <div class="industry-sector animate-on-scroll">
+                <div class="industry-card animate-on-scroll">
                     <div class="industry-icon">
                         <i class="fas fa-industry"></i>
                     </div>
                     <h3>Manufacturing</h3>
-                    <p>Empowering manufacturers with network infrastructure, industrial IoT solutions, and operational technology integration.</p>
+                    <p>Empowering manufacturers with network infrastructure, industrial IoT solutions, and operational technology integration for smart manufacturing environments.</p>
                 </div>
                 
-                <div class="industry-sector animate-on-scroll">
+                <div class="industry-card animate-on-scroll">
                     <div class="industry-icon">
                         <i class="fas fa-building"></i>
                     </div>
                     <h3>Corporate</h3>
-                    <p>Serving corporate clients with comprehensive IT solutions, unified communications, and secure connectivity.</p>
+                    <p>Serving corporate clients with comprehensive IT solutions, unified communications, and secure connectivity to drive business performance and growth.</p>
                 </div>
                 
-                <div class="industry-sector animate-on-scroll">
+                <div class="industry-card animate-on-scroll">
                     <div class="industry-icon">
                         <i class="fas fa-graduation-cap"></i>
                     </div>
                     <h3>Education</h3>
-                    <p>Supporting educational institutions with campus-wide networks, digital learning environments, and administrative systems.</p>
+                    <p>Supporting educational institutions with campus-wide networks, digital learning environments, and administrative systems for modern educational experiences.</p>
                 </div>
                 
-                <div class="industry-sector animate-on-scroll">
+                <div class="industry-card animate-on-scroll">
                     <div class="industry-icon">
                         <i class="fas fa-building"></i>
                     </div>
                     <h3>Real Estate</h3>
-                    <p>Delivering smart building technologies, property management systems, and integrated security solutions.</p>
+                    <p>Empowering real estate leaders like Solian with smart building technologies, property management systems, and integrated IT solutions for innovative property development.</p>
                 </div>
                 
-                <div class="industry-sector animate-on-scroll">
+                <div class="industry-card animate-on-scroll">
                     <div class="industry-icon">
                         <i class="fas fa-hotel"></i>
                     </div>
                     <h3>Hospitality</h3>
-                    <p>Enhancing guest experiences through reliable Wi-Fi, property management systems, and integrated communications.</p>
+                    <p>Enhancing guest experiences through reliable Wi-Fi, property management systems, and integrated communications for exceptional service delivery.</p>
                 </div>
                 
-                <div class="industry-sector animate-on-scroll">
+                <div class="industry-card animate-on-scroll">
                     <div class="industry-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3>Security</h3>
-                    <p>Implementing advanced security systems, surveillance networks, and integrated access control solutions.</p>
+                    <p>Implementing advanced security systems, surveillance networks, and integrated access control solutions for comprehensive physical and digital security.</p>
                 </div>
             </div>
         </div>
@@ -284,110 +377,122 @@
     <!-- Partners Section -->
     <section class="section bg-light">
         <div class="container">
-            <h2 class="text-center animate-on-scroll">Our Strategic Partners</h2>
-            <p class="text-center animate-on-scroll">Working with industry leaders to deliver world-class solutions</p>
+            <h2 class="client-showcase-title animate-on-scroll">Our Technology Partners</h2>
+            <p class="animate-on-scroll">Working with industry leaders to deliver world-class solutions</p>
             
-            <div class="partner-logos animate-on-scroll">
-                <div class="partner-logo-item">
-                    <img src="../img/partner-1.png" alt="Safaricom" class="partner-logo">
+            <div class="partners-grid animate-on-scroll">
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <img src="../img/safaricomlogo.png" alt="Safaricom" class="partner-logo">
+                    </div>
                     <h3>Safaricom</h3>
                     <p>Telecommunications Partner</p>
                 </div>
                 
-                <div class="partner-logo-item">
-                    <img src="../img/partner-2.png" alt="Huawei" class="partner-logo">
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <img src="../img/huawei-logo.png" alt="Huawei" class="partner-logo">
+                    </div>
                     <h3>Huawei</h3>
                     <p>Technology Provider</p>
                 </div>
                 
-                <div class="partner-logo-item">
-                    <img src="../img/partner-3.png" alt="ICT Authority" class="partner-logo">
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <img src="../img/ictlogo.png" alt="ICT Authority" class="partner-logo">
+                    </div>
                     <h3>ICT Authority</h3>
                     <p>Regulatory Partner</p>
                 </div>
                 
-                <div class="partner-logo-item">
-                    <img src="../img/partner-4.png" alt="Hewlett Packard" class="partner-logo">
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <img src="../img/hp-logo.png" alt="Hewlett Packard" class="partner-logo">
+                    </div>
                     <h3>Hewlett Packard</h3>
                     <p>Hardware Provider</p>
                 </div>
                 
-                <div class="partner-logo-item">
-                    <img src="../img/partner-5.png" alt="Cisco" class="partner-logo">
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <img src="../img/cisco-logo.png" alt="Cisco" class="partner-logo">
+                    </div>
                     <h3>Cisco</h3>
                     <p>Networking Partner</p>
                 </div>
                 
-                <div class="partner-logo-item">
-                    <img src="../img/partner-6.png" alt="Airtel" class="partner-logo">
+                <div class="partner-card">
+                    <div class="partner-logo">
+                        <img src="../img/airtel-logo.png" alt="Airtel" class="partner-logo">
+                    </div>
                     <h3>Airtel</h3>
                     <p>Telecommunications Partner</p>
                 </div>
             </div>
             
             <div class="text-center mt-5 animate-on-scroll">
-                <h3>Become a Partner</h3>
-                <p>Interested in partnering with Fischer Telesec? We're always looking to expand our network of strategic partners.</p>
+                <h3>Become a Technology Partner</h3>
+                <p>Looking to build a strategic partnership with Fischer Telesec? We're always exploring new collaboration opportunities with innovative technology providers.</p>
                 <a href="contact.html" class="btn btn-primary">Contact Us About Partnership</a>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="section testimonials">
+    <section class="section testimonial-container">
         <div class="container">
-            <h2 class="text-center animate-on-scroll">What Our Clients Say</h2>
-            <p class="text-center animate-on-scroll">Hear directly from the businesses we've helped</p>
+            <h2 class="client-showcase-title animate-on-scroll">Client Testimonials</h2>
+            <p class="animate-on-scroll">Insights from the organizations we've helped transform</p>
             
-            <div class="testimonials-container">
-                <div class="testimonial-card">
+            <div class="testimonials-grid">
+                <div class="testimonial-card animate-on-scroll">
                     <div class="testimonial-content">
                         "Fischer Telesec has been instrumental in transforming our network infrastructure. Their expertise and commitment to quality are unmatched in the industry. We've seen remarkable improvements in our system performance and reliability."
                     </div>
                     <div class="testimonial-author">
-                        <img src="../img/testimonial-1.jpg" alt="John Kamau - Safaricom">
-                        <div>
+                        <img src="../img/user.svg" alt="John Kamau - Safaricom">
+                        <div class="testimonial-details">
                             <h4>John Kamau</h4>
                             <p>IT Director, Safaricom</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card">
+                <div class="testimonial-card animate-on-scroll">
                     <div class="testimonial-content">
                         "Working with Fischer Telesec has been a game-changer for our organization. Their data center solutions provided us with the reliability and security we needed to scale our operations with confidence."
                     </div>
                     <div class="testimonial-author">
-                        <img src="../img/testimonial-2.jpg" alt="Sarah Omondi - Kenya Power">
-                        <div>
+                        <img src="../img/user.svg" alt="Sarah Omondi - Kenya Power">
+                        <div class="testimonial-details">
                             <h4>Sarah Omondi</h4>
                             <p>CTO, Kenya Power</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card">
+                <div class="testimonial-card animate-on-scroll">
                     <div class="testimonial-content">
                         "The team at Fischer Telesec has consistently delivered exceptional service and technical expertise. Their proactive approach to IT management has helped us avoid potential issues and maintain optimal system performance."
                     </div>
                     <div class="testimonial-author">
-                        <img src="../img/testimonial-3.jpg" alt="James Mwangi - Chai Trading Company">
-                        <div>
+                        <img src="../img/user.svg" alt="James Mwangi - Chai Trading Company">
+                        <div class="testimonial-details">
                             <h4>James Mwangi</h4>
                             <p>Operations Manager, Chai Trading Company</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-card">
+                <div class="testimonial-card animate-on-scroll">
                     <div class="testimonial-content">
-                        "We've worked with several IT providers in the past, but Fischer Telesec stands out for their technical knowledge, responsive support, and ability to deliver complex projects on time and within budget."
+                        "We've worked with several technology providers in the past, but Fischer Telesec stands out for their understanding of our architectural firm's technology needs, responsive support, and ability to deliver complex IT infrastructure that supports our design processes."
                     </div>
                     <div class="testimonial-author">
-                        <img src="../img/testimonial-4.jpg" alt="Elizabeth Wambui - Symbion Consulting">
-                        <div>
+                        <img src="../img/user.svg" alt="Elizabeth Wambui - Symbion Consulting Group">
+                        <div class="testimonial-details">
                             <h4>Elizabeth Wambui</h4>
-                            <p>CEO, Symbion Consulting</p>
+                            <p>CEO, Symbion Consulting Group</p>
                         </div>
                     </div>
                 </div>
@@ -396,13 +501,13 @@
     </section>
 
     <!-- Call-to-Action Section -->
-    <section class="cta-section">
+    <section class="cta-section modern-cta">
         <div class="container">
-            <h2 class="animate-on-scroll">Join Our Client Success Stories</h2>
-            <p class="animate-on-scroll">Let's discuss how our technology solutions can help your business thrive</p>
+            <h2 class="animate-on-scroll">Ready to Transform Your Business?</h2>
+            <p class="animate-on-scroll">Join our roster of satisfied clients and experience the difference that enterprise-grade technology solutions can make for your organization</p>
             <div class="hero-buttons">
                 <a href="getaquote.html" class="btn btn-accent animate-on-scroll">Get a Free Consultation</a>
-                <a href="work.html" class="btn btn-secondary animate-on-scroll">Explore Our Work</a>
+                <a href="contact.html" class="btn btn-secondary animate-on-scroll">Contact Our Team</a>
             </div>
         </div>
     </section>
@@ -414,10 +519,31 @@
                 <div class="footer-column">
                     <img src="../img/logo2.png" alt="Fischer Telesec Logo" class="footer-logo">
                     <p>Fischer Telesec is a leading telecommunications and IT solutions provider serving businesses across East Africa with enterprise-grade solutions.</p>
-                    <div class="contact-info">
-                        <p><i class="fas fa-map-marker-alt"></i> Zayed Plaza, Mombasa-Malindi Road, Mombasa, Kenya</p>
-                        <p><i class="fas fa-phone-alt"></i> +254 725 763 135, +254 724 612 514</p>
-                        <p><i class="fas fa-envelope"></i> info@fischertelesec.co.ke</p>
+                    <div class="contact-info-grid">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-text">
+                                <strong>Address:</strong>
+                                <p>Zayed Plaza, Mombasa-Malindi Road, Mombasa, Kenya</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div class="contact-text">
+                                <strong>Phone:</strong>
+                                <p>
+                                    <a href="tel:+254725763135">+254 725 763 135</a><br>
+                                    <a href="tel:+254724612514">+254 724 612 514</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-text">
+                                <strong>Email:</strong>
+                                <p><a href="mailto:info@fischertelesec.co.ke">info@fischertelesec.co.ke</a></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -475,5 +601,6 @@
 
     <!-- JavaScript -->
     <script src="../js/main.js"></script>
+    <script src="../js/clients.js"></script>
 </body>
 </html> 

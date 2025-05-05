@@ -1,5 +1,18 @@
 // Fischer Telesec Website JavaScript
 
+// Redirect from directory listing to index.html if needed
+(function() {
+  // Check if we're in a directory listing by looking for common directory listing elements
+  const isDirListing = document.title.includes('Index of') || 
+                       document.querySelector('h1')?.textContent?.includes('Index of') ||
+                       document.querySelector('title')?.textContent?.includes('Index of');
+  
+  // If it looks like a directory listing, redirect to index.html
+  if (isDirListing) {
+    window.location.href = 'index.html';
+  }
+})();
+
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize all components
@@ -8,6 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
   initPortfolioFilters();
   initTestimonialSlider();
+  debugHeroButtons();
+  styleCTAButton();
 });
 
 // Mobile Menu Toggle
@@ -264,7 +279,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.nav-menu a');
   
   navLinks.forEach(link => {
-    if (currentLocation === link.getAttribute('href')) {
+    // Handle both home pages (index.html and home.html)
+    const href = link.getAttribute('href');
+    if ((href === 'index.html' || href === 'home.html') && 
+        (currentLocation === '/' || 
+         currentLocation.endsWith('/index.html') || 
+         currentLocation.endsWith('index.html') ||
+         currentLocation.endsWith('/home.html') ||
+         currentLocation.endsWith('home.html'))) {
+      link.classList.add('active');
+    }
+    else if (currentLocation.endsWith(link.getAttribute('href'))) {
       link.classList.add('active');
     }
   });
@@ -308,4 +333,77 @@ document.addEventListener('DOMContentLoaded', () => {
   statCounters.forEach(counter => {
     observer.observe(counter);
   });
-}); 
+});
+
+// Debug Hero Buttons
+function debugHeroButtons() {
+  const heroButtons = document.querySelectorAll('.hero-buttons a');
+  
+  if (!heroButtons.length) return;
+  
+  heroButtons.forEach(button => {
+    // Store original styles
+    const isAccentButton = button.textContent.includes('Consultation');
+    const originalBackground = isAccentButton ? 'linear-gradient(135deg, #00d2d3, #00a0a0)' : 'transparent';
+    const hoverBackground = isAccentButton ? 'linear-gradient(135deg, #00a0a0, #00d2d3)' : 'rgba(255, 255, 255, 0.2)';
+    
+    // Force styles directly on the element
+    button.style.display = 'inline-block';
+    button.style.textDecoration = 'none';
+    button.style.cursor = 'pointer';
+    button.style.position = 'relative';
+    button.style.zIndex = '50';
+    button.style.pointerEvents = 'auto';
+    button.style.transition = 'all 0.3s ease';
+    
+    // Add hover effects with event listeners
+    button.addEventListener('mouseenter', () => {
+      button.style.background = hoverBackground;
+      button.style.transform = 'translateY(-3px)';
+      button.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.2)';
+    });
+    
+    button.addEventListener('mouseleave', () => {
+      button.style.background = originalBackground;
+      button.style.transform = 'translateY(0)';
+      button.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.15)';
+    });
+    
+    // Add click event listener for debugging
+    button.addEventListener('click', (e) => {
+      console.log('Hero button clicked:', button.textContent.trim());
+      // Let the default behavior happen but log it for debugging
+    });
+  });
+}
+
+// Style CTA Button with hover effects
+function styleCTAButton() {
+  const ctaButton = document.querySelector('.cta-section .btn-accent');
+  
+  if (!ctaButton) return;
+  
+  // Force styles directly on the element
+  ctaButton.style.display = 'inline-block';
+  ctaButton.style.background = 'linear-gradient(135deg, #00d2d3, #00a0a0)';
+  ctaButton.style.color = '#001f3f';
+  ctaButton.style.textDecoration = 'none';
+  ctaButton.style.cursor = 'pointer';
+  ctaButton.style.position = 'relative';
+  ctaButton.style.zIndex = '10';
+  ctaButton.style.pointerEvents = 'auto';
+  ctaButton.style.transition = 'all 0.3s ease';
+  
+  // Add hover effects with event listeners
+  ctaButton.addEventListener('mouseenter', () => {
+    ctaButton.style.background = 'linear-gradient(135deg, #00a0a0, #00d2d3)';
+    ctaButton.style.transform = 'translateY(-3px)';
+    ctaButton.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.2)';
+  });
+  
+  ctaButton.addEventListener('mouseleave', () => {
+    ctaButton.style.background = 'linear-gradient(135deg, #00d2d3, #00a0a0)';
+    ctaButton.style.transform = 'translateY(0)';
+    ctaButton.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.15)';
+  });
+} 

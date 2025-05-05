@@ -1,0 +1,13 @@
+# Setting default indexes
+DirectoryIndex index.html index.htm
+
+# Prevent directory listing
+Options -Indexes 
+
+# Ensure correct MIME types
+AddType text/html .html .htm
+AddType text/css .css
+AddType application/javascript .js
+
+# Handle errors
+ErrorDocument 404 /index.html 

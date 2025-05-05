@@ -55,7 +55,7 @@
         <!-- Main Navigation -->
         <nav class="container">
             <div class="navbar modern-navbar">
-                <a href="/" class="logo">
+                <a href="index.html" class="logo">
                     <img src="img/logo2.png" alt="Fischer Telesec Logo">
                 </a>
                 
@@ -64,7 +64,7 @@
                 </button>
                 
                 <ul class="nav-menu">
-                    <li><a href="/" class="active">Home</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="pages/aboutus.html">About</a></li>
                     <li><a href="pages/services.html">Services</a></li>
                     <li><a href="pages/work.html">Work</a></li>
@@ -82,15 +82,15 @@
         <div class="container">
             <div class="hero-content">
                 <h1 class="gradient-title">Transform Your Business with Future-Proof Tech</h1>
-                <p class="hero-subtitle">Empowering businesses in East Africa with enterprise-grade telecommunications & IT solutions</p>
+                <p class="hero-subtitle">Empowering businesses in East Africa with enterprise-grade telecommunications & IT solutions. We deliver innovative connectivity, security, and infrastructure solutions tailored to drive your growth.</p>
                 <div class="hero-buttons">
-                    <a href="pages/getaquote.html" class="btn btn-accent btn-lg">Get a Free Consultation</a>
-                    <a href="pages/services.html" class="btn btn-outline btn-lg">Explore Our Services</a>
+                    <a href="pages/getaquote.html" style="display: inline-block; padding: 0.85rem 1.75rem; background: linear-gradient(135deg, #00d2d3, #00a0a0); color: #001f3f; font-weight: 600; text-decoration: none; border-radius: 30px; margin-right: 15px; letter-spacing: 0.5px; text-transform: uppercase; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); position: relative; z-index: 50;">Get a Free Consultation</a>
+                    <a href="pages/services.html" style="display: inline-block; padding: 0.85rem 1.75rem; background: transparent; border: 2px solid rgba(255, 255, 255, 0.8); color: white; font-weight: 600; text-decoration: none; border-radius: 30px; letter-spacing: 0.5px; text-transform: uppercase; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); position: relative; z-index: 50;">Explore Our Services</a>
                 </div>
             </div>
         </div>
         <div class="hero-wave">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" role="img" aria-hidden="true">
                 <path fill="#ffffff" fill-opacity="1" d="M0,160L48,170.7C96,181,192,203,288,202.7C384,203,480,181,576,176C672,171,768,181,864,186.7C960,192,1056,192,1152,170.7C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
             </svg>
         </div>
@@ -166,7 +166,7 @@
             </div>
         </div>
         <div class="stats-wave">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" width="100%" height="100" role="img" aria-hidden="true">
                 <path fill="#ffffff" fill-opacity="1" d="M0,96L48,117.3C96,139,192,181,288,181.3C384,181,480,139,576,128C672,117,768,139,864,160C960,181,1056,203,1152,192C1248,181,1344,139,1392,117.3L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
             </svg>
         </div>
@@ -276,11 +276,10 @@
     </section>
 
     <!-- Call-to-Action Section -->
-    <section class="cta-section modern-cta">
-        <div class="cta-overlay"></div>
+    <section class="cta-section">
         <div class="container">
             <h2>Ready to Transform Your Business?</h2>
-            <p>Schedule a free consultation with our experts to discuss your technology needs</p>
+            <p>Schedule a free consultation with our experts to discuss your technology needs and discover how we can help you achieve your business goals.</p>
             <a href="pages/getaquote.html" class="btn btn-accent btn-lg">Book Your Consultation Today</a>
         </div>
     </section>
@@ -291,7 +290,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <div class="footer-brand">
-                        <a href="/">
+                        <a href="index.html">
                             <img src="img/logo2.png" alt="Fischer Telesec Logo" class="footer-logo">
                         </a>
                     </div>
@@ -307,7 +306,7 @@
                 <div class="footer-column">
                     <h5>Quick Links</h5>
                     <ul class="footer-links">
-                        <li><a href="/">Home</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="pages/aboutus.html">About Us</a></li>
                         <li><a href="pages/services.html">Services</a></li>
                         <li><a href="pages/work.html">Our Work</a></li>
@@ -330,11 +329,32 @@
                 
                 <div class="footer-column">
                     <h5>Contact Us</h5>
-                    <ul class="footer-links contact-info-footer">
-                        <li><i class="fas fa-map-marker-alt"></i> <span>Mombasa, Kenya</span></li>
-                        <li><i class="fas fa-phone-alt"></i> <a href="tel:+254725763135">+254 725 763 135</a></li>
-                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@fischertelesec.co.ke">info@fischertelesec.co.ke</a></li>
-                    </ul>
+                    <div class="contact-info-grid">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-text">
+                                <strong>Address:</strong>
+                                <p>Zayed Plaza, Mombasa-Malindi Road, Mombasa, Kenya</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div class="contact-text">
+                                <strong>Phone:</strong>
+                                <p>
+                                    <a href="tel:+254725763135">+254 725 763 135</a><br>
+                                    <a href="tel:+254724612514">+254 724 612 514</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-text">
+                                <strong>Email:</strong>
+                                <p><a href="mailto:info@fischertelesec.co.ke">info@fischertelesec.co.ke</a></p>
+                            </div>
+                        </div>
+                    </div>
                     
                     <h5 class="newsletter-title">Newsletter</h5>
                     <div class="newsletter">
@@ -355,6 +375,7 @@
     </footer>
 
     <!-- JavaScript -->
+    <script src="js/navigate-fix.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html> 

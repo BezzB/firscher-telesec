@@ -12,13 +12,941 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/styles.css">
+
+    <style>
+        /* Contact page specific styles */
+        .hero.contact-hero {
+            background: linear-gradient(135deg, var(--primary-900), var(--primary-700));
+            position: relative;
+            overflow: hidden;
+            padding: 150px 0 120px;
+        }
+        
+        .hero.contact-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../img/circuit-board.svg'), radial-gradient(circle at 80% 20%, rgba(12, 218, 245, 0.15), transparent 60%);
+            background-size: cover;
+            opacity: 0.15;
+            z-index: 1;
+        }
+        
+        .tech-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+        
+        .contact-hero .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        .contact-hero p {
+            font-size: 1.25rem;
+            color: var(--gray-200);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .contact-highlight {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .contact-method-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 250px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-method-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+        
+        .contact-method-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-method-icon::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            border-radius: 50%;
+            background: white;
+            z-index: 0;
+        }
+        
+        .contact-method-icon i {
+            position: relative;
+            z-index: 1;
+            color: var(--primary-600);
+            font-size: 1.5rem;
+        }
+        
+        .contact-method-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-800);
+            font-size: 1.2rem;
+        }
+        
+        .contact-method-card p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-method-card a {
+            color: var(--primary-500);
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+            transition: all 0.2s ease;
+        }
+        
+        .contact-method-card a:hover {
+            color: var(--primary-700);
+        }
+
+        .contact-container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            margin: 4rem auto;
+            position: relative;
+        }
+        
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .contact-form-col {
+            flex: 1;
+            padding: 3rem;
+            min-width: 300px;
+        }
+        
+        .contact-info-col {
+            flex: 0 0 40%;
+            min-width: 300px;
+            background: linear-gradient(135deg, var(--primary-800), var(--primary-900));
+            color: white;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-info-col::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            opacity: 0.1;
+            top: -100px;
+            right: -100px;
+            border-radius: 100%;
+        }
+        
+        .contact-info-col::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            opacity: 0.1;
+            bottom: -50px;
+            left: -50px;
+            border-radius: 100%;
+        }
+        
+        .contact-info-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-form-col h2, .contact-info-content h2 {
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .contact-form-col h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-form .form-control {
+            background-color: var(--gray-100);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 12px 16px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .contact-form .form-control:focus {
+            background-color: white;
+            border-color: var(--primary-400);
+            box-shadow: 0 0 0 3px rgba(27, 93, 141, 0.1);
+        }
+        
+        .contact-form label {
+            font-weight: 500;
+            color: var(--gray-700);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* Form Row for two-column layout */
+        .form-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 0;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        /* Floating Label Styles */
+        .floating-label {
+            position: relative;
+        }
+        
+        .floating-label label {
+            position: absolute;
+            top: 0.8rem;
+            left: 1rem;
+            padding: 0 0.5rem;
+            background: transparent;
+            transition: all 0.2s ease;
+            pointer-events: none;
+            margin: 0;
+            color: var(--gray-500);
+        }
+        
+        .floating-label .form-control {
+            padding: 1.2rem 1rem 0.6rem;
+            height: 3.5rem;
+        }
+        
+        .floating-label textarea.form-control {
+            min-height: 8rem;
+            padding: 1.8rem 1rem 0.6rem;
+            height: auto;
+        }
+        
+        .floating-label .form-control:focus ~ label,
+        .floating-label .form-control:not(:placeholder-shown) ~ label {
+            transform: translateY(-0.85rem) scale(0.85);
+            background-color: white;
+            padding: 0 0.4rem;
+            color: var(--primary-500);
+            font-weight: 600;
+        }
+        
+        .floating-label .form-control:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(27, 93, 141, 0.15);
+            border-color: var(--primary-400);
+            background-color: white;
+        }
+        
+        /* Form validation styles */
+        .form-control:invalid:not(:placeholder-shown) {
+            border-color: #e74c3c;
+        }
+        
+        .form-control:valid:not(:placeholder-shown) {
+            border-color: #2ecc71;
+        }
+        
+        /* Form hints */
+        .form-hint {
+            display: block;
+            margin-top: 0.3rem;
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            font-style: italic;
+        }
+        
+        /* Enhanced Select Styles */
+        .enhanced-select {
+            position: relative;
+        }
+        
+        .select-wrapper {
+            position: relative;
+            display: block;
+        }
+        
+        .select-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-500);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        
+        .enhanced-select select {
+            appearance: none;
+            padding-right: 2.5rem;
+            cursor: pointer;
+        }
+        
+        .enhanced-select select:focus + .select-icon {
+            transform: translateY(-50%) rotate(180deg);
+            color: var(--primary-700);
+        }
+        
+        /* Checkbox Styles */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 2px solid var(--gray-400);
+            border-radius: 4px;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+            position: relative;
+            top: 0.2rem;
+        }
+        
+        .checkbox-group input[type="checkbox"]:checked {
+            background-color: var(--primary-500);
+            border-color: var(--primary-500);
+        }
+        
+        .checkbox-group input[type="checkbox"]:focus {
+            box-shadow: 0 0 0 3px rgba(27, 93, 141, 0.15);
+            outline: none;
+        }
+        
+        .checkbox-group input[type="checkbox"]:checked::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: white;
+            font-size: 0.75rem;
+            display: block;
+        }
+        
+        .checkbox-group label {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--gray-600);
+            margin: 0;
+            cursor: pointer;
+        }
+        
+        /* Form Submit Area */
+        .form-submit {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        
+        .required-fields {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            font-style: italic;
+        }
+        
+        /* Animated Button */
+        .btn-animated {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            overflow: hidden;
+            padding-right: 3rem;
+            position: relative;
+        }
+        
+        .btn-animated i {
+            position: absolute;
+            right: 1.5rem;
+            transform: translateX(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-animated:hover i {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .btn-animated span {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-animated:hover span {
+            transform: translateX(-5px);
+        }
+        
+        /* Form validation and error styles */
+        .form-group.has-error .form-control {
+            border-color: #e74c3c;
+            background-color: rgba(231, 76, 60, 0.05);
+        }
+        
+        .form-group.has-error label {
+            color: #e74c3c;
+        }
+        
+        .form-error {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+            display: block;
+        }
+        
+        .form-error-message {
+            background-color: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid #e74c3c;
+            color: #e74c3c;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .form-error-message i {
+            margin-right: 0.75rem;
+            font-size: 1.2rem;
+        }
+        
+        .fade-out {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        /* Form success state */
+        .form-success {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(46, 204, 113, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .success-icon i {
+            color: #2ecc71;
+            font-size: 2.5rem;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .form-success h3 {
+            color: var(--primary-800);
+            margin-bottom: 1rem;
+        }
+        
+        .form-success p {
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(0.95);
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .is-focused {
+            position: relative;
+        }
+        
+        .is-focused::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary-500);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .is-focused.floating-label::after {
+            width: calc(100% - 2rem);
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .form-submit {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            
+            .form-submit .required-fields {
+                order: -1;
+            }
+            
+            .btn-animated {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-info-icon i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        .contact-info-text h4 {
+            color: white;
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .contact-info-text p, .contact-info-text a {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        .contact-info-text a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links-alt {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .social-links-alt a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links-alt a:hover {
+            background: var(--accent);
+            color: var(--primary-900);
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 992px) {
+            .contact-row {
+                flex-direction: column;
+            }
+            .contact-methods {
+                margin-top: 1rem;
+            }
+            .contact-method-card {
+                width: 100%;
+                max-width: 300px;
+            }
+            .contact-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .map-section-heading {
+            margin-bottom: 2rem;
+        }
+        
+        .accent-line {
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 0 auto 1.5rem;
+            border-radius: 2px;
+        }
+
+        .map-wrapper {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            height: 450px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 8px solid white;
+        }
+        
+        .map-card {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            max-width: 250px;
+            z-index: 10;
+        }
+        
+        .map-card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+            color: white;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+        
+        .map-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-800);
+            font-size: 1.2rem;
+        }
+        
+        .map-card p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .map-container {
+            position: relative;
+        }
+        
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .map-card {
+                position: relative;
+                top: -30px;
+                right: 0;
+                margin: 0 auto;
+                max-width: 90%;
+            }
+        }
+
+        .section-heading {
+            margin-bottom: 3rem;
+        }
+        
+        .modern-faq {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .modern-faq .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modern-faq .faq-item:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .modern-faq .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .modern-faq .faq-question h3 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-800);
+        }
+        
+        .modern-faq .faq-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--gray-100);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .modern-faq .faq-icon i {
+            color: var(--primary-500);
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .modern-faq .faq-item.active .faq-icon {
+            background: var(--primary-500);
+        }
+        
+        .modern-faq .faq-item.active .faq-icon i {
+            color: white;
+            transform: rotate(45deg);
+        }
+        
+        .modern-faq .faq-item.active .faq-question {
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        /* Error message styles */
+        .error-message {
+            color: var(--error);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .form-error-message {
+            margin-bottom: 1.5rem;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .error-content {
+            background-color: rgba(var(--error-rgb), 0.08);
+            border-left: 4px solid var(--error);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .error-content i {
+            color: var(--error);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .error-content p {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--gray-800);
+        }
+        
+        /* Contact success message */
+        .contact-success-message {
+            background: linear-gradient(135deg, #f0f9ff, #e6f7ff);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+            border: 1px solid rgba(var(--primary-rgb), 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: #10b981; /* success green */
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-success-message h3 {
+            color: var(--primary-800);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-success-message p {
+            color: var(--gray-700);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+        
+        .success-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-600);
+            border: 1px solid var(--primary-400);
+            border-radius: 8px;
+            font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background: rgba(var(--primary-rgb), 0.05);
+        }
+        
+        /* Newsletter message styles */
+        .newsletter-message {
+            margin-top: 10px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .newsletter-message .success-message {
+            color: #10b981;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .newsletter-message .error-message {
+            color: var(--error);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
     <!-- Header Section -->
@@ -63,7 +991,7 @@
                 </button>
                 
                 <ul class="nav-menu">
-                    <li><a href="../">Home</a></li>
+                    <li><a href="../index.html">Home</a></li>
                     <li><a href="aboutus.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="work.html">Work</a></li>
@@ -76,102 +1004,184 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero contact-hero">
+        <div id="particles-js" class="tech-particles"></div>
         <div class="container">
-            <div class="hero-content">
-                <h1 class="animate-on-scroll">Get in Touch</h1>
-                <p class="animate-on-scroll">We're here to answer your questions and help you find the right technology solutions</p>
+            <div class="hero-content text-center">
+                <h1 class="animate-on-scroll">Connect With Our Team</h1>
+                <p class="animate-on-scroll">Need expert telecommunications and IT solutions? Our team of <span class="contact-highlight">technology specialists</span> is ready to help you achieve your business goals.</p>
             </div>
         </div>
     </section>
 
+    <!-- Contact Methods -->
+    <div class="container">
+        <div class="contact-methods">
+            <div class="contact-method-card animate-on-scroll" data-delay="0">
+                <div class="contact-method-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <h3>Call Us</h3>
+                <p>Our support team is available during business hours</p>
+                <a href="tel:+254725763135">+254 725 763 135</a>
+            </div>
+            
+            <div class="contact-method-card animate-on-scroll" data-delay="100">
+                <div class="contact-method-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>Email Us</h3>
+                <p>Send us an email and we'll respond promptly</p>
+                <a href="mailto:info@fischertelesec.co.ke">info@fischertelesec.co.ke</a>
+            </div>
+            
+            <div class="contact-method-card animate-on-scroll" data-delay="200">
+                <div class="contact-method-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3>Visit Us</h3>
+                <p>Zayed Plaza, Mombasa-Malindi Road</p>
+                <a href="#map-section">View on Map</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Contact Form Section -->
     <section class="section">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6 animate-on-scroll">
-                    <h2>Send Us a Message</h2>
-                    <p>Fill out the form below, and our team will get back to you as soon as possible.</p>
+            <div class="contact-container animate-on-scroll">
+                <div class="contact-row">
+                    <div class="contact-form-col">
+                        <h2>Send Us a Message</h2>
+                        <p>Fill out the form below, and our team will get back to you as soon as possible.</p>
+                        
+                        <form id="contact-form" class="contact-form" action="https://formspree.io/f/mayrbovd" method="POST">
+                            <div class="form-row">
+                                <div class="form-group floating-label">
+                                    <input type="text" id="name" name="name" class="form-control" required placeholder=" ">
+                                    <label for="name">Full Name *</label>
+                                    <div class="form-hint">Please enter your first and last name</div>
+                                </div>
+                                
+                                <div class="form-group floating-label">
+                                    <input type="email" id="email" name="email" class="form-control" required placeholder=" ">
+                                    <label for="email">Email Address *</label>
+                                    <div class="form-hint">We'll never share your email with anyone else</div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group floating-label">
+                                    <input type="tel" id="phone" name="phone" class="form-control" placeholder=" ">
+                                    <label for="phone">Phone Number</label>
+                                    <div class="form-hint">Include country code for international numbers</div>
+                                </div>
+                                
+                                <div class="form-group floating-label">
+                                    <input type="text" id="company" name="company" class="form-control" placeholder=" ">
+                                    <label for="company">Company</label>
+                                    <div class="form-hint">Name of your organization</div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group enhanced-select">
+                                <label for="service">Service of Interest</label>
+                                <div class="select-wrapper">
+                                    <select id="service" name="service" class="form-control">
+                                        <option value="" disabled selected>Select a service</option>
+                                        <option value="telecommunications">Telecommunications Services</option>
+                                        <option value="it-infrastructure">IT Infrastructure</option>
+                                        <option value="datacenter">Data Center Services</option>
+                                        <option value="managed-services">Managed IT Services</option>
+                                        <option value="cloud">Cloud Services</option>
+                                        <option value="maintenance">Maintenance & Support</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <i class="fas fa-chevron-down select-icon"></i>
+                                </div>
+                                <div class="form-hint">Choose the service you're most interested in</div>
+                            </div>
+                            
+                            <div class="form-group floating-label">
+                                <textarea id="message" name="message" class="form-control" rows="5" required placeholder=" "></textarea>
+                                <label for="message">Message *</label>
+                                <div class="form-hint">Please provide details about your project or inquiry</div>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <label for="consent">I consent to Fischer Telesec collecting my data via this form and contacting me regarding my inquiry. *</label>
+                            </div>
+
+                            <div class="form-group checkbox-group">
+                                <input type="checkbox" id="newsletter" name="newsletter">
+                                <label for="newsletter">Sign me up for the newsletter to receive updates on services and industry insights.</label>
+                            </div>
+                            
+                            <div class="form-submit">
+                                <button type="submit" class="btn btn-animated">
+                                    <span>Send Message</span>
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                                <span class="required-fields">* Required fields</span>
+                            </div>
+                        </form>
+                    </div>
                     
-                    <form id="contact-form" class="contact-form" action="https://formspree.io/f/your-formspree-id" method="POST">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" class="form-control">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="company">Company</label>
-                            <input type="text" id="company" name="company" class="form-control">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="service">Service of Interest</label>
-                            <select id="service" name="service" class="form-control">
-                                <option value="">Select a service</option>
-                                <option value="telecommunications">Telecommunications Services</option>
-                                <option value="it-infrastructure">IT Infrastructure</option>
-                                <option value="datacenter">Data Center Services</option>
-                                <option value="managed-services">Managed IT Services</option>
-                                <option value="cloud">Cloud Services</option>
-                                <option value="maintenance">Maintenance & Support</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
-                
-                <div class="col-lg-6 animate-on-scroll">
-                    <h2>Contact Information</h2>
-                    <p>You can also reach us directly using the information below.</p>
-                    
-                    <div class="contact-info-grid">
-                        <div class="contact-info-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
+                    <div class="contact-info-col">
+                        <div class="contact-info-content">
+                            <h2>Contact Information</h2>
+                            <p>Reach out to us directly using the information below.</p>
+                            
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-info-text">
+                                    <h4>Our Location</h4>
+                                    <p>Zayed Plaza, Mombasa-Malindi Road,<br>Mombasa, Kenya</p>
+                                </div>
                             </div>
-                            <h3>Our Location</h3>
-                            <p>Zayed Plaza, Mombasa-Malindi Road,<br>Mombasa, Kenya</p>
-                        </div>
-                        
-                        <div class="contact-info-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone-alt"></i>
+                            
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="contact-info-text">
+                                    <h4>Phone Numbers</h4>
+                                    <p><a href="tel:+254725763135">+254 725 763 135</a><br>
+                                    <a href="tel:+254724612514">+254 724 612 514</a></p>
+                                </div>
                             </div>
-                            <h3>Phone Numbers</h3>
-                            <p>+254 725 763 135<br>+254 724 612 514</p>
-                        </div>
-                        
-                        <div class="contact-info-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
+                            
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-info-text">
+                                    <h4>Email Address</h4>
+                                    <p><a href="mailto:info@fischertelesec.co.ke">info@fischertelesec.co.ke</a></p>
+                                </div>
                             </div>
-                            <h3>Email Address</h3>
-                            <p>info@fischertelesec.co.ke</p>
-                        </div>
-                        
-                        <div class="contact-info-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
+                            
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="contact-info-text">
+                                    <h4>Business Hours</h4>
+                                    <p>Monday - Friday: 8AM - 5PM<br>
+                                    Saturday: 9AM - 1PM<br>
+                                    Sunday: Closed</p>
+                                </div>
                             </div>
-                            <h3>Business Hours</h3>
-                            <p>Monday - Friday: 8AM - 5PM<br>Saturday: 9AM - 1PM<br>Sunday: Closed</p>
+                            
+                            <div class="social-links-alt">
+                                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -180,11 +1190,27 @@
     </section>
 
     <!-- Map Section -->
-    <section class="section bg-light">
+    <section id="map-section" class="section bg-light">
         <div class="container">
-            <h2 class="text-center animate-on-scroll">Find Us</h2>
+            <div class="map-section-heading text-center animate-on-scroll">
+                <h2>Find Our Location</h2>
+                <div class="accent-line"></div>
+                <p>Visit our office in Mombasa for in-person consultations and meetings</p>
+            </div>
             <div class="map-container animate-on-scroll">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127356.66476972857!2d39.5966054!3d-4.0379245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184012e78ec02c15%3A0xcb618bbc35d0db5a!2sMombasa%2C%20Kenya!5e0!3m2!1sen!2sus!4v1620123456789!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <div class="map-wrapper">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127356.66476972857!2d39.5966054!3d-4.0379245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184012e78ec02c15%3A0xcb618bbc35d0db5a!2sMombasa%2C%20Kenya!5e0!3m2!1sen!2sus!4v1620123456789!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="map-card">
+                    <div class="map-card-content">
+                        <div class="map-card-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3>Fischer Telesec</h3>
+                        <p>Zayed Plaza, <br>Mombasa-Malindi Road, <br>Mombasa, Kenya</p>
+                        <a href="https://goo.gl/maps/3y5Z5Z5Z5Z5Z5Z5Z5" target="_blank" class="btn btn-sm btn-primary">Get Directions</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -192,10 +1218,13 @@
     <!-- FAQ Section -->
     <section class="section">
         <div class="container">
-            <h2 class="text-center animate-on-scroll">Frequently Asked Questions</h2>
-            <p class="text-center animate-on-scroll">Find answers to common questions about our services</p>
+            <div class="section-heading text-center animate-on-scroll">
+                <h2>Frequently Asked Questions</h2>
+                <div class="accent-line"></div>
+                <p>Find answers to common questions about our services and solutions</p>
+            </div>
             
-            <div class="faq-container">
+            <div class="faq-container modern-faq">
                 <div class="faq-item animate-on-scroll">
                     <div class="faq-question">
                         <h3>What areas do you serve?</h3>
@@ -258,6 +1287,25 @@
         </div>
     </section>
 
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-row">
+                <div class="newsletter-content animate-on-scroll">
+                    <h2>Subscribe to Our Newsletter</h2>
+                    <p>Stay updated with our latest services, industry insights, and technology trends.</p>
+                </div>
+                <div class="newsletter-form-container animate-on-scroll">
+                    <form id="newsletter-form" action="https://formspree.io/f/mayrbovd" method="POST" class="newsletter-form">
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-accent">Subscribe</button>
+                        <div class="newsletter-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -265,10 +1313,31 @@
                 <div class="footer-column">
                     <img src="../img/logo2.png" alt="Fischer Telesec Logo" class="footer-logo">
                     <p>Fischer Telesec is a leading telecommunications and IT solutions provider serving businesses across East Africa with enterprise-grade solutions.</p>
-                    <div class="contact-info">
-                        <p><i class="fas fa-map-marker-alt"></i> Zayed Plaza, Mombasa-Malindi Road, Mombasa, Kenya</p>
-                        <p><i class="fas fa-phone-alt"></i> +254 725 763 135, +254 724 612 514</p>
-                        <p><i class="fas fa-envelope"></i> info@fischertelesec.co.ke</p>
+                    <div class="contact-info-grid">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-text">
+                                <strong>Address:</strong>
+                                <p>Zayed Plaza, Mombasa-Malindi Road, Mombasa, Kenya</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div class="contact-text">
+                                <strong>Phone:</strong>
+                                <p>
+                                    <a href="tel:+254725763135">+254 725 763 135</a><br>
+                                    <a href="tel:+254724612514">+254 724 612 514</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-text">
+                                <strong>Email:</strong>
+                                <p><a href="mailto:info@fischertelesec.co.ke">info@fischertelesec.co.ke</a></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -305,9 +1374,11 @@
                 <div class="footer-column newsletter">
                     <h5>Newsletter</h5>
                     <p>Subscribe to our newsletter for the latest updates</p>
-                    <form action="#" method="POST">
+                    <form id="footer-newsletter-form" action="https://formspree.io/f/mayrbovd" method="POST" class="newsletter-form">
                         <input type="email" name="email" placeholder="Your email address" required>
+                        <input type="hidden" name="form-type" value="newsletter-subscription">
                         <button type="submit" class="btn btn-accent">Subscribe</button>
+                        <div class="newsletter-message"></div>
                     </form>
                     <div class="social-icons">
                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -326,6 +1397,7 @@
 
     <!-- JavaScript -->
     <script src="../js/main.js"></script>
+    <script src="../js/contact-form.js"></script>
     
     <!-- FAQ JavaScript -->
     <script>

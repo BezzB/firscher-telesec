@@ -19,6 +19,10 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/work.css">
+    
+    <!-- Particles.js for tech background effects -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
 </head>
 <body>
     <!-- Header Section -->
@@ -63,7 +67,7 @@
                 </button>
                 
                 <ul class="nav-menu">
-                    <li><a href="../">Home</a></li>
+                    <li><a href="../index.html">Home</a></li>
                     <li><a href="aboutus.html">About</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="work.html" class="active">Work</a></li>
@@ -76,17 +80,18 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero hero-work">
+        <div class="tech-circuit-bg"></div>
         <div class="container">
             <div class="hero-content">
-                <h1 class="animate-on-scroll">Our Portfolio</h1>
-                <p class="animate-on-scroll">Showcasing our successful projects and implementations</p>
+                <h1>Portfolio</h1>
+                <p>—</p>
             </div>
         </div>
     </section>
 
     <!-- Portfolio Filters -->
-    <section class="section">
+    <section class="section portfolio-section">
         <div class="container">
             <div class="portfolio-filters animate-on-scroll">
                 <button class="filter-btn active" data-filter="all">All Projects</button>
@@ -99,74 +104,74 @@
             
             <div class="portfolio-grid">
                 <div class="portfolio-item animate-on-scroll" data-category="network">
-                    <img src="../img/portfolio-1.jpg" alt="Corporate Network Overhaul" class="portfolio-img">
+                    <img src="../img/telesec4.jpg" alt="Corporate Network Overhaul" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h4>Corporate Network Overhaul</h4>
                         <p>Telecommunications</p>
-                        <a href="#project1" class="btn btn-accent portfolio-view">View Details</a>
+                        <a href="#project1" class="portfolio-view">View Details</a>
                     </div>
                 </div>
                 
                 <div class="portfolio-item animate-on-scroll" data-category="datacenter">
-                    <img src="../img/portfolio-2.jpg" alt="Data Center Implementation" class="portfolio-img">
+                    <img src="../img/datacenter.jpg" alt="Data Center Implementation" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h4>Data Center Implementation</h4>
                         <p>Utilities</p>
-                        <a href="#project2" class="btn btn-accent portfolio-view">View Details</a>
+                        <a href="#project2" class="portfolio-view">View Details</a>
                     </div>
                 </div>
                 
                 <div class="portfolio-item animate-on-scroll" data-category="cloud">
-                    <img src="../img/portfolio-3.jpg" alt="Cloud Migration Project" class="portfolio-img">
+                    <img src="../img/project2.jpg" alt="Cloud Migration Project" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h4>Cloud Migration Project</h4>
                         <p>Agriculture</p>
-                        <a href="#project3" class="btn btn-accent portfolio-view">View Details</a>
+                        <a href="#project3" class="portfolio-view">View Details</a>
                     </div>
                 </div>
                 
                 <div class="portfolio-item animate-on-scroll" data-category="security">
-                    <img src="../img/portfolio-4.jpg" alt="Enterprise Security Implementation" class="portfolio-img">
+                    <img src="../img/project4.jpg" alt="Enterprise Security Implementation" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h4>Enterprise Security Implementation</h4>
                         <p>Banking</p>
-                        <a href="#project4" class="btn btn-accent portfolio-view">View Details</a>
+                        <a href="#project4" class="portfolio-view">View Details</a>
                     </div>
                 </div>
                 
                 <div class="portfolio-item animate-on-scroll" data-category="telecom">
-                    <img src="../img/portfolio-5.jpg" alt="VoIP System Deployment" class="portfolio-img">
+                    <img src="../img/project5.jpg" alt="VoIP System Deployment" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h4>VoIP System Deployment</h4>
                         <p>Hospitality</p>
-                        <a href="#project5" class="btn btn-accent portfolio-view">View Details</a>
+                        <a href="#project5" class="portfolio-view">View Details</a>
                     </div>
                 </div>
                 
                 <div class="portfolio-item animate-on-scroll" data-category="network">
-                    <img src="../img/portfolio-6.jpg" alt="Campus-Wide Network Deployment" class="portfolio-img">
+                    <img src="../img/project 6.jpg" alt="Campus-Wide Network Deployment" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h4>Campus-Wide Network Deployment</h4>
                         <p>Education</p>
-                        <a href="#project6" class="btn btn-accent portfolio-view">View Details</a>
+                        <a href="#project6" class="portfolio-view">View Details</a>
                     </div>
                 </div>
                 
                 <div class="portfolio-item animate-on-scroll" data-category="datacenter">
-                    <img src="../img/portfolio-7.jpg" alt="Server Room Optimization" class="portfolio-img">
+                    <img src="../img/telesec10.jpg" alt="Server Room Optimization" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h4>Server Room Optimization</h4>
                         <p>Manufacturing</p>
-                        <a href="#project7" class="btn btn-accent portfolio-view">View Details</a>
+                        <a href="#project7" class="portfolio-view">View Details</a>
                     </div>
                 </div>
                 
                 <div class="portfolio-item animate-on-scroll" data-category="security">
-                    <img src="../img/portfolio-8.jpg" alt="Secure Remote Access Solution" class="portfolio-img">
+                    <img src="../img/project 8.jpg" alt="Secure Remote Access Solution" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h4>Secure Remote Access Solution</h4>
                         <p>Logistics</p>
-                        <a href="#project8" class="btn btn-accent portfolio-view">View Details</a>
+                        <a href="#project8" class="portfolio-view">View Details</a>
                     </div>
                 </div>
             </div>
@@ -174,13 +179,16 @@
     </section>
 
     <!-- Featured Case Studies -->
-    <section class="section bg-light">
+    <section class="section case-studies-section">
+        <div class="tech-circuit-bg"></div>
         <div class="container">
-            <h2 class="text-center animate-on-scroll">Featured Case Studies</h2>
-            <p class="text-center animate-on-scroll">Detailed examinations of our most impactful projects</p>
+            <div class="section-header">
+                <h2>Featured Case Studies</h2>
+                <p>Our most impactful technology implementations for industry leaders</p>
+            </div>
             
             <div class="case-studies">
-                <div id="project1" class="case-study animate-on-scroll">
+                <div id="project1" class="case-study">
                     <div class="case-study-header">
                         <h3>Corporate Network Overhaul - Safaricom</h3>
                         <span class="case-study-category">Telecommunications</span>
@@ -188,7 +196,7 @@
                     
                     <div class="case-study-content">
                         <div class="case-study-image">
-                            <img src="../img/case-study-1.jpg" alt="Safaricom Network Infrastructure">
+                            <img src="../img/safaricomlogo.png" alt="Safaricom Network Infrastructure">
                         </div>
                         
                         <div class="case-study-details">
@@ -223,7 +231,7 @@
                     </div>
                 </div>
                 
-                <div id="project2" class="case-study animate-on-scroll">
+                <div id="project2" class="case-study">
                     <div class="case-study-header">
                         <h3>Data Center Implementation - Kenya Power</h3>
                         <span class="case-study-category">Utilities</span>
@@ -231,7 +239,7 @@
                     
                     <div class="case-study-content">
                         <div class="case-study-image">
-                            <img src="../img/case-study-2.jpg" alt="Kenya Power Data Center">
+                            <img src="../img/kenya-power.png" alt="Kenya Power Data Center">
                         </div>
                         
                         <div class="case-study-details">
@@ -267,7 +275,7 @@
                     </div>
                 </div>
                 
-                <div id="project3" class="case-study animate-on-scroll">
+                <div id="project3" class="case-study">
                     <div class="case-study-header">
                         <h3>Cloud Migration Project - Chai Trading Company</h3>
                         <span class="case-study-category">Agriculture</span>
@@ -275,7 +283,7 @@
                     
                     <div class="case-study-content">
                         <div class="case-study-image">
-                            <img src="../img/case-study-3.jpg" alt="Chai Trading Cloud Migration">
+                            <img src="../img/chai-trading-logo.png" alt="Chai Trading Cloud Migration">
                         </div>
                         
                         <div class="case-study-details">
@@ -345,63 +353,73 @@
     </section>
 
     <!-- Project Process -->
-    <section class="section">
+    <section class="section process-section">
+        <div class="tech-circuit-bg"></div>
         <div class="container">
-            <h2 class="text-center animate-on-scroll">Our Project Approach</h2>
-            <p class="text-center animate-on-scroll">How we deliver successful outcomes for our clients</p>
+            <div class="section-header">
+                <h2>Our Project Approach</h2>
+                <p>A structured methodology delivering successful outcomes for our clients</p>
+            </div>
             
-            <div class="process-steps">
-                <div class="process-step animate-on-scroll">
+            <div class="process-steps process-animated">
+                <div class="process-step">
                     <div class="process-number">1</div>
                     <div class="process-content">
+                        <div class="process-icon"><i class="fas fa-search"></i></div>
                         <h3>Discovery & Assessment</h3>
                         <p>We begin by understanding your business objectives, challenges, and current technology landscape through comprehensive assessment.</p>
                     </div>
                 </div>
                 
-                <div class="process-step animate-on-scroll">
+                <div class="process-step">
                     <div class="process-number">2</div>
                     <div class="process-content">
+                        <div class="process-icon"><i class="fas fa-pencil-ruler"></i></div>
                         <h3>Solution Design</h3>
                         <p>Our experts design a tailored solution that addresses your specific needs, considering scalability, security, and performance requirements.</p>
                     </div>
                 </div>
                 
-                <div class="process-step animate-on-scroll">
+                <div class="process-step">
                     <div class="process-number">3</div>
                     <div class="process-content">
+                        <div class="process-icon"><i class="fas fa-tasks"></i></div>
                         <h3>Implementation Planning</h3>
                         <p>We develop a detailed implementation plan with timelines, resource allocation, risk mitigation strategies, and success criteria.</p>
                     </div>
                 </div>
                 
-                <div class="process-step animate-on-scroll">
+                <div class="process-step">
                     <div class="process-number">4</div>
                     <div class="process-content">
+                        <div class="process-icon"><i class="fas fa-cogs"></i></div>
                         <h3>Execution & Deployment</h3>
                         <p>Our skilled team executes the implementation with precision, following best practices to ensure minimal disruption to your operations.</p>
                     </div>
                 </div>
                 
-                <div class="process-step animate-on-scroll">
+                <div class="process-step">
                     <div class="process-number">5</div>
                     <div class="process-content">
+                        <div class="process-icon"><i class="fas fa-clipboard-check"></i></div>
                         <h3>Testing & Validation</h3>
                         <p>We conduct thorough testing to verify all components work correctly and meet the defined requirements and performance standards.</p>
                     </div>
                 </div>
                 
-                <div class="process-step animate-on-scroll">
+                <div class="process-step">
                     <div class="process-number">6</div>
                     <div class="process-content">
+                        <div class="process-icon"><i class="fas fa-user-cog"></i></div>
                         <h3>Training & Handover</h3>
                         <p>We provide comprehensive training for your team and complete knowledge transfer to ensure a smooth transition.</p>
                     </div>
                 </div>
                 
-                <div class="process-step animate-on-scroll">
+                <div class="process-step">
                     <div class="process-number">7</div>
                     <div class="process-content">
+                        <div class="process-icon"><i class="fas fa-headset"></i></div>
                         <h3>Ongoing Support</h3>
                         <p>We offer continued support and maintenance services to ensure your systems remain optimal and adapt to evolving needs.</p>
                     </div>
@@ -411,13 +429,16 @@
     </section>
 
     <!-- Call-to-Action Section -->
-    <section class="cta-section">
+    <section class="tech-cta">
+        <div class="cta-particles" id="particles-cta"></div>
         <div class="container">
-            <h2 class="animate-on-scroll">Ready to Start Your Project?</h2>
-            <p class="animate-on-scroll">Let's discuss how our expertise can help bring your technology vision to life</p>
-            <div class="hero-buttons">
-                <a href="getaquote.html" class="btn btn-accent animate-on-scroll">Request a Quote</a>
-                <a href="contact.html" class="btn btn-secondary animate-on-scroll">Contact Our Team</a>
+            <div class="cta-content">
+                <h2 class="animate-on-scroll">Ready to Start Your Project?</h2>
+                <p class="animate-on-scroll">Let's discuss how our expertise can help bring your technology vision to life</p>
+                <div class="cta-buttons">
+                    <a href="getaquote.html" class="btn btn-accent btn-glow animate-on-scroll">Request a Quote</a>
+                    <a href="contact.html" class="btn btn-outline-light animate-on-scroll">Contact Our Team</a>
+                </div>
             </div>
         </div>
     </section>
@@ -429,10 +450,31 @@
                 <div class="footer-column">
                     <img src="../img/logo2.png" alt="Fischer Telesec Logo" class="footer-logo">
                     <p>Fischer Telesec is a leading telecommunications and IT solutions provider serving businesses across East Africa with enterprise-grade solutions.</p>
-                    <div class="contact-info">
-                        <p><i class="fas fa-map-marker-alt"></i> Zayed Plaza, Mombasa-Malindi Road, Mombasa, Kenya</p>
-                        <p><i class="fas fa-phone-alt"></i> +254 725 763 135, +254 724 612 514</p>
-                        <p><i class="fas fa-envelope"></i> info@fischertelesec.co.ke</p>
+                    <div class="contact-info-grid">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-text">
+                                <strong>Address:</strong>
+                                <p>Zayed Plaza, Mombasa-Malindi Road, Mombasa, Kenya</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div class="contact-text">
+                                <strong>Phone:</strong>
+                                <p>
+                                    <a href="tel:+254725763135">+254 725 763 135</a><br>
+                                    <a href="tel:+254724612514">+254 724 612 514</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-text">
+                                <strong>Email:</strong>
+                                <p><a href="mailto:info@fischertelesec.co.ke">info@fischertelesec.co.ke</a></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -491,9 +533,9 @@
     <!-- JavaScript -->
     <script src="../js/main.js"></script>
     
-    <!-- Portfolio Filters JavaScript -->
+    <!-- Portfolio JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', function() {
             // Portfolio Filtering
             const filterBtns = document.querySelectorAll('.filter-btn');
             const portfolioItems = document.querySelectorAll('.portfolio-item');
@@ -538,6 +580,73 @@
                         });
                     }
                 });
+            });
+            
+            // Add animation to elements on scroll
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.animate-on-scroll').forEach(item => {
+                observer.observe(item);
+            });
+            
+            // Process section animation
+            const processObserver = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('show-animation');
+                            processObserver.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.2 }
+            );
+            
+            document.querySelectorAll('.process-animated').forEach(item => {
+                processObserver.observe(item);
+            });
+            
+            // Stats counter animation
+            const stats = document.querySelectorAll('.stat-counter');
+            
+            stats.forEach(stat => {
+                const statObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const target = parseInt(stat.getAttribute('data-target'));
+                            let count = 0;
+                            const updateCounter = () => {
+                                const increment = target / 60;
+                                if (count < target) {
+                                    count += increment;
+                                    stat.textContent = Math.ceil(count);
+                                    setTimeout(updateCounter, 30);
+                                } else {
+                                    stat.textContent = target;
+                                }
+                            };
+                            updateCounter();
+                            statObserver.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.5
+                });
+                
+                statObserver.observe(stat);
             });
         });
     </script>
