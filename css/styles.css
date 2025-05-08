@@ -305,7 +305,7 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('../img/circuit-pattern.png');
+  background-image: url('../img/tech-pattern.svg');
   opacity: 0.1;
   z-index: 1;
 }
