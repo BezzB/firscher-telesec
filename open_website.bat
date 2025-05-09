@@ -1,3 +1,0 @@
-@echo off
-echo Opening Fischer Telesec Website...
-start "" "index.html" 

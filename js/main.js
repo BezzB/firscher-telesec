@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initTestimonialSlider();
   debugHeroButtons();
   styleCTAButton();
+  initHeroAnimations();
+  initQuickSolutions();
 });
 
 // Mobile Menu Toggle
@@ -33,29 +35,33 @@ function initMobileMenu() {
   if (!mobileMenuBtn || !navMenu) return;
   
   mobileMenuBtn.addEventListener('click', () => {
+    const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+    mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
     navMenu.classList.toggle('active');
-    
-    // Adjust aria-expanded attribute for accessibility
-    const isExpanded = navMenu.classList.contains('active');
-    mobileMenuBtn.setAttribute('aria-expanded', isExpanded);
-    
-    // Toggle menu icon
-    const menuIcon = mobileMenuBtn.querySelector('i');
-    if (menuIcon.classList.contains('fa-bars')) {
-      menuIcon.classList.remove('fa-bars');
-      menuIcon.classList.add('fa-times');
-    } else {
-      menuIcon.classList.remove('fa-times');
-      menuIcon.classList.add('fa-bars');
-    }
+    mobileMenuBtn.classList.toggle('active');
   });
   
   // Close mobile menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!navMenu.contains(e.target) && !mobileMenuBtn.contains(e.target) && navMenu.classList.contains('active')) {
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.navbar') && navMenu.classList.contains('active')) {
       navMenu.classList.remove('active');
-      mobileMenuBtn.setAttribute('aria-expanded', false);
+      mobileMenuBtn.classList.remove('active');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
     }
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
   });
 }
 
@@ -130,67 +136,163 @@ function initPortfolioFilters() {
   });
 }
 
-// Testimonial Slider
+// Enhanced Testimonial Slider
 function initTestimonialSlider() {
-  const testimonialContainer = document.querySelector('.testimonials-container');
-  const testimonials = document.querySelectorAll('.testimonial-card');
-  
-  if (!testimonialContainer || testimonials.length < 2) return;
-  
-  let currentIndex = 0;
-  const testimonialWidth = testimonials[0].offsetWidth + parseInt(window.getComputedStyle(testimonials[0]).marginRight);
-  
-  // Next/Prev buttons if they exist
-  const prevBtn = document.querySelector('.testimonial-prev');
-  const nextBtn = document.querySelector('.testimonial-next');
-  
-  if (prevBtn) {
-    prevBtn.addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        scrollToCurrentTestimonial();
-      }
+    const testimonialContainer = document.querySelector('.testimonials-slider');
+    const testimonials = document.querySelectorAll('.testimonial-card');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.querySelector('.testimonial-prev');
+    const nextBtn = document.querySelector('.testimonial-next');
+    
+    if (!testimonialContainer || testimonials.length < 2) return;
+    
+    let currentIndex = 0;
+    let isAnimating = false;
+    let autoScrollInterval;
+    
+    // Add transition classes to testimonials
+    testimonials.forEach(testimonial => {
+        testimonial.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        testimonial.style.opacity = '0';
+        testimonial.style.transform = 'translateX(50px)';
+        testimonial.style.display = 'none';
     });
-  }
-  
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      if (currentIndex < testimonials.length - 1) {
-        currentIndex++;
-        scrollToCurrentTestimonial();
-      }
+    
+    function updateSlider() {
+        if (isAnimating) return;
+        isAnimating = true;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+        
+        // Hide all testimonials first
+        testimonials.forEach(testimonial => {
+            testimonial.style.display = 'none';
+            testimonial.style.opacity = '0';
+            testimonial.style.transform = 'translateX(50px)';
+        });
+        
+        // Show current testimonial with animation
+        const currentTestimonial = testimonials[currentIndex];
+        currentTestimonial.style.display = 'block';
+        
+        // Trigger reflow
+        currentTestimonial.offsetHeight;
+        
+        // Animate in
+        currentTestimonial.style.opacity = '1';
+        currentTestimonial.style.transform = 'translateX(0)';
+        
+        // Update button states with smooth transition
+        prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+        nextBtn.style.opacity = currentIndex === testimonials.length - 1 ? '0.5' : '1';
+        
+        // Reset animation flag after transition
+        setTimeout(() => {
+            isAnimating = false;
+        }, 500);
+    }
+    
+    // Initialize slider
+    updateSlider();
+    
+    // Event listeners for navigation with debounce
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+    
+    const debouncedUpdate = debounce(() => {
+        updateSlider();
+    }, 50);
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0 && !isAnimating) {
+                currentIndex--;
+                debouncedUpdate();
+            }
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < testimonials.length - 1 && !isAnimating) {
+                currentIndex++;
+                debouncedUpdate();
+            }
+        });
+    }
+    
+    // Enhanced dot navigation with hover effect
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            if (currentIndex !== index && !isAnimating) {
+                currentIndex = index;
+                debouncedUpdate();
+            }
+        });
+        
+        // Add hover effect
+        dot.addEventListener('mouseenter', () => {
+            if (!dot.classList.contains('active')) {
+                dot.style.transform = 'scale(1.2)';
+            }
+        });
+        
+        dot.addEventListener('mouseleave', () => {
+            if (!dot.classList.contains('active')) {
+                dot.style.transform = 'scale(1)';
+            }
+        });
     });
-  }
-  
-  function scrollToCurrentTestimonial() {
-    testimonialContainer.scrollTo({
-      left: currentIndex * testimonialWidth,
-      behavior: 'smooth'
+    
+    // Auto scroll with pause on interaction
+    function startAutoScroll() {
+        autoScrollInterval = setInterval(() => {
+            if (!isAnimating) {
+                currentIndex = (currentIndex + 1) % testimonials.length;
+                updateSlider();
+            }
+        }, 5000);
+    }
+    
+    function stopAutoScroll() {
+        clearInterval(autoScrollInterval);
+    }
+    
+    // Start auto scroll
+    startAutoScroll();
+    
+    // Pause auto scroll on interaction
+    testimonialContainer.addEventListener('mouseenter', stopAutoScroll);
+    testimonialContainer.addEventListener('mouseleave', startAutoScroll);
+    testimonialContainer.addEventListener('touchstart', stopAutoScroll);
+    testimonialContainer.addEventListener('touchend', startAutoScroll);
+    
+    // Add keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft' && !isAnimating) {
+            if (currentIndex > 0) {
+                currentIndex--;
+                debouncedUpdate();
+            }
+        } else if (e.key === 'ArrowRight' && !isAnimating) {
+            if (currentIndex < testimonials.length - 1) {
+                currentIndex++;
+                debouncedUpdate();
+            }
+        }
     });
-  }
-  
-  // Auto scroll every 5 seconds
-  let autoScrollInterval;
-  
-  function startAutoScroll() {
-    autoScrollInterval = setInterval(() => {
-      currentIndex = (currentIndex + 1) % testimonials.length;
-      scrollToCurrentTestimonial();
-    }, 5000);
-  }
-  
-  function stopAutoScroll() {
-    clearInterval(autoScrollInterval);
-  }
-  
-  // Start auto scroll
-  startAutoScroll();
-  
-  // Pause auto scroll when user is interacting
-  testimonialContainer.addEventListener('mouseenter', stopAutoScroll);
-  testimonialContainer.addEventListener('mouseleave', startAutoScroll);
-  testimonialContainer.addEventListener('touchstart', stopAutoScroll);
-  testimonialContainer.addEventListener('touchend', startAutoScroll);
 }
 
 // Form Validation
@@ -406,4 +508,56 @@ function styleCTAButton() {
     ctaButton.style.transform = 'translateY(0)';
     ctaButton.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.15)';
   });
+}
+
+// Hero Section Animations
+function initHeroAnimations() {
+    const heroSection = document.querySelector('.hero-section');
+    if (!heroSection) return;
+
+    // Parallax effect for floating elements
+    const floatingElements = document.querySelectorAll('.tech-circle, .tech-square, .tech-triangle');
+    window.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX / window.innerWidth;
+        const mouseY = e.clientY / window.innerHeight;
+
+        floatingElements.forEach((element) => {
+            const speed = element.classList.contains('tech-circle') ? 0.05 :
+                         element.classList.contains('tech-square') ? 0.03 : 0.04;
+            
+            const x = (mouseX - 0.5) * speed * 100;
+            const y = (mouseY - 0.5) * speed * 100;
+            
+            element.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    });
+
+    // Animate text elements on scroll
+    const textElements = document.querySelectorAll('.animate-text');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    textElements.forEach(element => observer.observe(element));
+}
+
+// Quick Solutions Section
+function initQuickSolutions() {
+    const solutionCards = document.querySelectorAll('.solution-card');
+    
+    solutionCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px)';
+            card.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.3)';
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+            card.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
+        });
+    });
 } 
